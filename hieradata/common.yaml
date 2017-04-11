@@ -1,2 +1,2 @@
 ---
-splunk::params::src_root: "https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=6.5.3&product=splunk&filename=splunk-6.5.3-36937ad027d4-linux-2.6-amd64.deb&wget=true"
+splunk::params::src_root: "https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk/linux/splunk-6.5.3-36937ad027d4-linux-2.6-amd64.deb"
