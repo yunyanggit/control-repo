@@ -9,5 +9,6 @@ class profile::splunk::forwarder {
 
   class { '::splunk::forwarder':
     server   => 'splunkserver',
+    build    => '36937ad027d4',
   }
 }
