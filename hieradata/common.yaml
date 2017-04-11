@@ -1,2 +1,2 @@
 ---
-splunk::params::src_root: "https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk/linux/splunk-6.5.3-36937ad027d4-linux-2.6-amd64.deb"
+splunk::params::src_root: "https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries"
