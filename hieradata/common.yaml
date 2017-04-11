@@ -1,6 +1,1 @@
 ---
-splunk::params::src_root: "https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries"
-splunk::params::version:  "6.5.3"
-splunk::params::build:    "36937ad027d4"
-splunk::params::server:   "splunkserver" # for forwarder only
-splunk::params::forwarder_pkg_src: "https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk/universalforwarder/windows/splunkforwarder-6.5.3-36937ad027d4-x64-release.msi"
