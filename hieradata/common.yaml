@@ -2,3 +2,4 @@
 splunk::params::src_root: "https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries"
 splunk::params::version:  "6.5.3"
 splunk::params::build:    "36937ad027d4"
+splunk::params::server:   "splunkserver" # for forwarder only
