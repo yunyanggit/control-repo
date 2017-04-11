@@ -3,7 +3,7 @@
 class profile::splunk::forwarder {
 
   class { '::splunk::params':
-    src_root => 'https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries',
+    src_root => 'https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk',
     version  => '6.5.3',
   }
 
