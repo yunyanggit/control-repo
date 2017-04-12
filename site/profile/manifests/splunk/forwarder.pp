@@ -14,4 +14,11 @@ class profile::splunk::forwarder {
     pkg_provider => 'windows',
     splunk_user  => 'vagrant',
   }
+  ->
+    @splunkforwarder_input { 'puppetserver-sourcetype':
+    section => 'monitor:///C:/log',
+    setting => 'sourcetype',
+    value   => 'Log4Net:Autobahn',
+    tag     => 'splunk_forwarder'
+  }
 }
