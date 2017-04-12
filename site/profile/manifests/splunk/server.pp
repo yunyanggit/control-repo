@@ -11,7 +11,7 @@ class profile::splunk::server {
 
   include ::splunk
   splunk_indexes { 'autobahn-log4net-index':
-    section => 'ab_log4:///C:\\logs\\Autobahn\\Eleanor.UI.Web',
+    section => 'ab_log4',
     setting => 'maxTotalDataSizeMB',
     value   => 10240,
   }
