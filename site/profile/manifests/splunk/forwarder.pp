@@ -31,6 +31,11 @@ class profile::splunk::forwarder {
   section => 'monitor:///C:\\logs\\Autobahn\\Eleanor.UI.Web',
   setting => 'whitelist',
   value   => '\\.log\\.*',
+  } ->
+  splunkforwarder_input { 'autobahn-log4net-disabled':
+    section => 'monitor:///C:\\logs\\Autobahn\\Eleanor.UI.Web',
+    setting => 'disabled',
+    value   => 0,
   }
 
   # [Autobahn:Log4Net]
