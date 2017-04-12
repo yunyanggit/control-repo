@@ -60,21 +60,21 @@ class profile::splunk::server {
     section => 'Autobahn:Log4Net',
     setting => 'EXTRACT-level',
     value   => '^[^,\n]*,\d+\s+(?P<level>\w+)',
-    require => Class['::splunk::forwarder'],
+    require => Class['::splunk'],
   }
 
   splunk_props { 'autobahn-log4net-logger':
     section => 'Autobahn:Log4Net',
     setting => 'EXTRACT-logger',
     value   => '^(?:[^ \n]* ){3}(?P<logger>[^ ]+)',
-    require => Class['::splunk::forwarder'],
+    require => Class['::splunk'],
   }
 
   splunk_props { 'autobahn-log4net-message':
     section => 'Autobahn:Log4Net',
     setting => 'EXTRACT-message',
     value   => '^(?:[^ \n]* ){5}(?P<message>.+)',
-    require => Class['::splunk::forwarder'],
+    require => Class['::splunk'],
   }
 
 }
