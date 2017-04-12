@@ -23,10 +23,10 @@ class profile::splunk::forwarder {
   }
   ->
   @splunkforwarder_input { 'autobahn-log4net-index':
-  section => 'monitor:///C:\\logs\\Autobahn\\Eleanor.UI.Web',
-  setting => 'index',
-  value   => 'ab_log4',
-  tag     => 'splunk_forwarder',
+    section => 'monitor:///C:\\logs\\Autobahn\\Eleanor.UI.Web',
+    setting => 'index',
+    value   => 'ab_log4',
+    tag     => 'splunk_forwarder',
   }
   ->
   @splunkforwarder_input { 'autobahn-log4net-whitelist':
@@ -34,8 +34,10 @@ class profile::splunk::forwarder {
   setting => 'whitelist',
   value   => '\\.log\\.*',
   tag     => 'splunk_forwarder',
-}
+  }
 
+
+}
 # [monitor://C:\logs\Autobahn\Eleanor.UI.Web]
 # disabled = false
 # index = ab_log4
