@@ -5,8 +5,23 @@ class profile::splunk::server {
 
 
   class { '::splunk':
-    src_root => "https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk",
-    version  => "6.5.3",
-    build    => "36937ad027d4",
+    src_root => 'https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk',
+    version  => '6.5.3',
+    build    => '36937ad027d4',
   }
+  splunk_indexes { 'autobahn-log4net-index':
+    section => 'ab_log4:///C:\\logs\\Autobahn\\Eleanor.UI.Web',
+    setting => 'maxTotalDataSizeMB',
+    value   => 10240,
+  }
+  # [ab_log4]
+  # coldPath = $SPLUNK_DB/ab_log4/colddb
+  # enableDataIntegrityControl = 0
+  # enableTsidxReduction = 1
+  # homePath = $SPLUNK_DB/ab_log4/db
+  # maxTotalDataSizeMB = 10240
+  # thawedPath = $SPLUNK_DB/ab_log4/thaweddb
+  # timePeriodInSecBeforeTsidxReduction = 1209600
+  # tsidxReductionCheckPeriodInSec =
+
 }
