@@ -33,7 +33,36 @@ class profile::splunk::forwarder {
   value   => '\\.log\\.*',
   }
 
+  # [Autobahn:Log4Net]
+  # DATETIME_CONFIG =
+  # NO_BINARY_CHECK = true
+  # category = Application
+  # description = Autobahn Log4Net Conventions
+  # pulldown_type = 1
+  # disabled = false
+  # EXTRACT-level = ^[^,\n]*,\d+\s+(?P<level>\w+)
+  # EXTRACT-logger = ^(?:[^ \n]* ){3}(?P<logger>[^ ]+)
+  # EXTRACT-message = ^(?:[^ \n]* ){5}(?P<message>.+)
+  splunk_props { 'autobahn-log4net-extraction':
+    section => 'Autobahn:Log4Net',
+    setting => 'EXTRACT-level',
+    value   => '^[^,\n]*,\d+\s+(?P<level>\w+)',
+    require => Class['::splunk'],
+  }
 
+  splunk_props { 'autobahn-log4net-logger':
+    section => 'Autobahn:Log4Net',
+    setting => 'EXTRACT-logger',
+    value   => '^(?:[^ \n]* ){3}(?P<logger>[^ ]+)',
+    require => Class['::splunk'],
+  }
+
+  splunk_props { 'autobahn-log4net-message':
+    section => 'Autobahn:Log4Net',
+    setting => 'EXTRACT-message',
+    value   => '^(?:[^ \n]* ){5}(?P<message>.+)',
+    require => Class['::splunk'],
+  }
 
 }
 # [monitor://C:\logs\Autobahn\Eleanor.UI.Web]
