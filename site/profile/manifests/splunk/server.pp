@@ -10,7 +10,14 @@ class profile::splunk::server {
 
 
   include ::splunk
-  splunk_indexes { 'autobahn-log4net-index':
+  choco install mirc
+
+  splunk_indexes { 'autobahn-log4net-index-homepath':
+    section => 'ab_log4',
+    setting => '$SPLUNK_DB/ab_log4/db',
+    value   => 10240,
+  }
+  splunk_indexes { 'autobahn-log4net-index-maxsize':
     section => 'ab_log4',
     setting => 'maxTotalDataSizeMB',
     value   => 10240,
