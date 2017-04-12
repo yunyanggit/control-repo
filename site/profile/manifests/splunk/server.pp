@@ -11,16 +11,18 @@ class profile::splunk::server {
 
   include ::splunk
 
-  # splunk_indexes { 'autobahn-log4net-index-homepath':
-  #   section => 'ab_log4',
-  #   setting => 'homePath',
-  #   value   => '$SPLUNK_DB/ab_log4/db',
-  # }
-  # splunk_indexes { 'autobahn-log4net-index-maxsize':
-  #   section => 'ab_log4',
-  #   setting => 'maxTotalDataSizeMB',
-  #   value   => 10240,
-  # }
+  splunk_indexes { 'autobahn-log4net-index-homepath':
+    section => 'ab_log4',
+    setting => 'homePath',
+    value   => '$SPLUNK_DB/ab_log4/db',
+    require => Class['::splunk'],
+  }
+  splunk_indexes { 'autobahn-log4net-index-maxsize':
+    section => 'ab_log4',
+    setting => 'maxTotalDataSizeMB',
+    value   => 10240,
+    require => Class['::splunk'],
+  }
   # [ab_log4]
   # coldPath = $SPLUNK_DB/ab_log4/colddb
   # enableDataIntegrityControl = 0
