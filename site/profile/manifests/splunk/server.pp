@@ -24,7 +24,7 @@ class profile::splunk::server {
     require => Class['::splunk'],
   }
 
-  splunk_indexes { 'autobahn-log4net-index-maxsize':
+  splunk_indexes { 'autobahn-log4net-index-colddb':
     section => 'ab_log4',
     setting => 'coldPath',
     value   => '$SPLUNK_DB/ab_log4/colddb',
