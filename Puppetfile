@@ -1,7 +1,7 @@
 forge 'http://forge.puppetlabs.com'
 
 # Modules discovered by generate-puppetfile
-mod 'puppet/splunk', '5.1.0'
+mod 'puppet/splunk', :git    => 'https://github.com/puppetlabs/puppetlabs-apache', :branch => 'bug/windows-forwarder-install-dir-wrong-slashes'
 mod 'puppet/staging', '2.2.0'
 mod 'puppetlabs/inifile', '1.6.0'
 mod 'puppetlabs/stdlib', '4.16.0'
