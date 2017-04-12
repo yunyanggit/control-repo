@@ -30,6 +30,13 @@ class profile::splunk::server {
     value   => '$SPLUNK_DB/ab_log4/colddb',
     require => Class['::splunk'],
   }
+
+  splunk_indexes { 'autobahn-log4net-index-thawedpath':
+    section => 'ab_log4',
+    setting => 'thawedPath',
+    value   => '$SPLUNK_DB/ab_log4/thaweddb',
+    require => Class['::splunk'],
+  }
   # [ab_log4]
   # coldPath = $SPLUNK_DB/ab_log4/colddb
   # enableDataIntegrityControl = 0
