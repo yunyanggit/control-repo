@@ -2,13 +2,14 @@
 #
 class profile::splunk::server {
 
-
-
-  class { '::splunk':
-    src_root => 'https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk',
-    version  => '6.5.3',
-    build    => '36937ad027d4',
+  class { '::splunk::params':
+      src_root => 'https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk',
+      version  => '6.5.3',
+      build    => '36937ad027d4',
   }
+
+
+  include ::splunk
   splunk_indexes { 'autobahn-log4net-index':
     section => 'ab_log4:///C:\\logs\\Autobahn\\Eleanor.UI.Web',
     setting => 'maxTotalDataSizeMB',
