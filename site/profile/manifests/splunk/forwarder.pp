@@ -43,21 +43,21 @@ class profile::splunk::forwarder {
   # EXTRACT-level = ^[^,\n]*,\d+\s+(?P<level>\w+)
   # EXTRACT-logger = ^(?:[^ \n]* ){3}(?P<logger>[^ ]+)
   # EXTRACT-message = ^(?:[^ \n]* ){5}(?P<message>.+)
-  splunk_props { 'autobahn-log4net-extraction':
+  splunkforwarder_props { 'autobahn-log4net-extraction':
     section => 'Autobahn:Log4Net',
     setting => 'EXTRACT-level',
     value   => '^[^,\n]*,\d+\s+(?P<level>\w+)',
     require => Class['::splunk::forwarder'],
   }
 
-  splunk_props { 'autobahn-log4net-logger':
+  splunkforwarder_props { 'autobahn-log4net-logger':
     section => 'Autobahn:Log4Net',
     setting => 'EXTRACT-logger',
     value   => '^(?:[^ \n]* ){3}(?P<logger>[^ ]+)',
     require => Class['::splunk::forwarder'],
   }
 
-  splunk_props { 'autobahn-log4net-message':
+  splunkforwarder_props { 'autobahn-log4net-message':
     section => 'Autobahn:Log4Net',
     setting => 'EXTRACT-message',
     value   => '^(?:[^ \n]* ){5}(?P<message>.+)',
