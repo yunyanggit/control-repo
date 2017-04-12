@@ -34,6 +34,7 @@ class profile::splunk::forwarder {
   }
 
 
+
 }
 # [monitor://C:\logs\Autobahn\Eleanor.UI.Web]
 # disabled = false

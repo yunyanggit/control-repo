@@ -3,7 +3,7 @@
 class profile::splunk::server {
 
   class { '::splunk::params':
-      src_root => 'https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries/splunk',
+      src_root => 'https://s3.amazonaws.com/gcc-webops-provisioning-scripts/binaries',
       version  => '6.5.3',
       build    => '36937ad027d4',
   }
@@ -11,16 +11,16 @@ class profile::splunk::server {
 
   include ::splunk
 
-  splunk_indexes { 'autobahn-log4net-index-homepath':
-    section => 'ab_log4',
-    setting => 'homePath',
-    value   => '$SPLUNK_DB/ab_log4/db',
-  }
-  splunk_indexes { 'autobahn-log4net-index-maxsize':
-    section => 'ab_log4',
-    setting => 'maxTotalDataSizeMB',
-    value   => 10240,
-  }
+  # splunk_indexes { 'autobahn-log4net-index-homepath':
+  #   section => 'ab_log4',
+  #   setting => 'homePath',
+  #   value   => '$SPLUNK_DB/ab_log4/db',
+  # }
+  # splunk_indexes { 'autobahn-log4net-index-maxsize':
+  #   section => 'ab_log4',
+  #   setting => 'maxTotalDataSizeMB',
+  #   value   => 10240,
+  # }
   # [ab_log4]
   # coldPath = $SPLUNK_DB/ab_log4/colddb
   # enableDataIntegrityControl = 0
