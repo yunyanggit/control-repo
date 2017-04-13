@@ -11,6 +11,12 @@ class profile::splunk::server {
 
   include ::splunk
 
+  class { '::splunk::password':
+    secret_file      => '/home/splunk/etc/auth/splunk.secret',
+    secret           => 'SmElqM6zFgmYL9ytIF90RCJyP2fQLJnOf6TvsGmS4LdJ2tjJxXl2QUx9yu4Nt4pDMH3Od9xf/CyAyFiDky92cX5xvc3PQGcXGyg0UEGlGTOGbYC1ENEePfP1zJ/lpJhJz8LpRJ0EZ0lpZEJAO1qXoGIoDnrgfE1UFOgNlO9sY8tiPW1QQuQqp7PkGML7ouGnKmARB6fbJTlZm1rOpCOGHKYvMi.h4SQgxaumaMsdWhQDZWaVhN9wS5AV2yTjwj',
+    password_content => ':admin:1E919780391AA15DBBEC13CDC5C5F9A29C4B759CC29A8CF729D9DC809924ECB56F98B69072E7A9C7103C1F2073FEF06FA91C9E6112E90DAFF23C3A9B91069A01::Administrator:admin:team-webops@blinds.com::'
+  }
+
   splunk_indexes { 'autobahn-log4net-index-homepath':
     section => 'ab_log4',
     setting => 'homePath',
