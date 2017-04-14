@@ -85,14 +85,14 @@ class profile::splunk::server {
     require => Class['::splunk'],
   }
 
-  splunk_uiprefs { 'default-search-time-range':
+  splunk_uiprefs { 'default-search-earliest-time':
     section => 'search',
     setting => 'dispatch.earliest_time',
     value   => '@d',
     require => Class['::splunk'],
   }
 
-  splunk_uiprefs { 'default-search-time-range':
+  splunk_uiprefs { 'default-search-latest-time':
     section => 'search',
     setting => 'dispatch.latest_time',
     value   => 'now',
