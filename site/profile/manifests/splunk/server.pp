@@ -11,13 +11,13 @@ class profile::splunk::server {
 
   include ::splunk
 
-  # class { '::splunk::password':
-  #   password_config_file => '/opt/splunk/etc/passwd',
-  #   secret_file          => '/opt/splunk/etc/auth/splunk.secret',
-  #   secret               => 'SmElqM6zFgmYL9ytIF90RCJyP2fQLJnOf6TvsGmS4LdJ2tjJxXl2QUx9yu4Nt4pDMH3Od9xf/CyAyFiDky92cX5xvc3PQGcXGyg0UEGlGTOGbYC1ENEePfP1zJ/lpJhJz8LpRJ0EZ0lpZEJAO1qXoGIoDnrgfE1UFOgNlO9sY8tiPW1QQuQqp7PkGML7ouGnKmARB6fbJTlZm1rOpCOGHKYvMi.h4SQgxaumaMsdWhQDZWaVhN9wS5AV2yTjwj',
-  #   password_content     => ':admin ::Administrator:admin:team-webops@blinds.com::',
-  #   package_name         => 'splunk',
-  # }
+  class { '::splunk::password':
+    password_config_file => '/opt/splunk/etc/passwd',
+    secret_file          => '/opt/splunk/etc/auth/splunk.secret',
+    secret               => 'SmElqM6zFgmYL9ytIF90RCJyP2fQLJnOf6TvsGmS4LdJ2tjJxXl2QUx9yu4Nt4pDMH3Od9xf/CyAyFiDky92cX5xvc3PQGcXGyg0UEGlGTOGbYC1ENEePfP1zJ/lpJhJz8LpRJ0EZ0lpZEJAO1qXoGIoDnrgfE1UFOgNlO9sY8tiPW1QQuQqp7PkGML7ouGnKmARB6fbJTlZm1rOpCOGHKYvMi.h4SQgxaumaMsdWhQDZWaVhN9wS5AV2yTjwj',
+    password_content     => ':splunkadmin:$6$t5t.bsrJdm0LbJ2b$75tUzceccVKWHt2ymOQ5njTL3fR9DL3pKXDI.snjXa/ndkyhzd2mLDZ7zFwpR78c9AO1fWTd6wyJxnOGwUOtX.::local admin:admin;user:team-webops@blinds.com::',
+    package_name         => 'splunk',
+  }
 
   splunk_indexes { 'autobahn-log4net-index-homepath':
     section => 'ab_log4',
