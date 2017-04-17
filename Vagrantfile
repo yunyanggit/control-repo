@@ -7,9 +7,9 @@ Vagrant.configure('2') do |config|
     node.vm.network "forwarded_port", guest: 8081, host: 8081
     node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
     node.vm.synced_folder ".", "/vagrant"
-    # node.vm.provider "virtualbox" do |v|
-    #   v.memory = 4096
-    # end
+    node.vm.provider "virtualbox" do |v|
+      v.memory = 4096
+    end
     node.vm.provision :pe_bootstrap do |p|
       p.role = :master
     end
@@ -63,9 +63,6 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.define :splunkforwarder do |node|
-    node.vm.provider "virtualbox" do |vb|
-      vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
-    end
     node.vm.hostname = 'splunkforwarder'
     node.vm.network :private_network, :ip => '10.20.1.6'
     node.vm.box = 'mwrock/Windows2012R2'
