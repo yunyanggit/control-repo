@@ -90,7 +90,7 @@ class profile::splunk::server {
   splunk_props { 'puppetserver-logs-message':
     section => 'puppetserver',
     setting => 'EXTRACT-message',
-    value   => '^[^,\n]*,\d+\s+(?P<level>\w+)',
+    value   => '^(?:[^ \n]* ){6}(?P<message>.+)',
     require => Class['::splunk'],
   }
 
