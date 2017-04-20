@@ -56,6 +56,36 @@ class profile::splunk::server {
   # EXTRACT-level = ^[^,\n]*,\d+\s+(?P<level>\w+)
   # EXTRACT-logger = ^(?:[^ \n]* ){3}(?P<logger>[^ ]+)
   # EXTRACT-message = ^(?:[^ \n]* ){5}(?P<message>.+)
+
+
+  splunk_indexes { 'puppetserver-index-homepath':
+    section => 'puppetserver',
+    setting => 'homePath',
+    value   => '$SPLUNK_DB/puppetserver/db',
+    require => Class['::splunk'],
+  }
+  splunk_indexes { 'puppetserver-index-maxsize':
+    section => 'puppetserver',
+    setting => 'maxTotalDataSizeMB',
+    value   => 10240,
+    require => Class['::splunk'],
+  }
+
+  splunk_indexes { 'puppetserver-index-colddb':
+    section => 'puppetserver',
+    setting => 'coldPath',
+    value   => '$SPLUNK_DB/puppetserver/colddb',
+    require => Class['::splunk'],
+  }
+
+  splunk_indexes { 'puppetserver-index-thawedpath':
+    section => 'ab_log4',
+    setting => 'thawedPath',
+    value   => '$SPLUNK_DB/puppetserver/thaweddb',
+    require => Class['::splunk'],
+  }
+
+
   splunk_props { 'autobahn-log4net-extraction':
     section => 'Log4Net:Autobahn',
     setting => 'EXTRACT-level',
