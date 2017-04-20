@@ -11,14 +11,6 @@ class profile::splunk::server {
 
   include ::splunk
 
-  class { '::splunk::password':
-    password_config_file => '/opt/splunk/etc/passwd',
-    secret_file          => '/opt/splunk/etc/auth/splunk.secret',
-    secret               => 'hhy9DOGqli4.aZWCuGvz8stcqT2/OSJUZuyWHKc4wnJtQ6IZu2bfjeElgYmGHN9RWIT3zs5hRJcX1wGerpMNObWhFue78jZMALs3c3Mzc6CzM98/yGYdfcvWMo1HRdKn82LVeBJI5dNznlZWfzg6xdywWbeUVQZcOZtODi10hdxSJ4I3wmCv0nmkSWMVOEKHxti6QLgjfuj/MOoh8.2pM0/CqF5u6ORAzqFZ8Qf3c27uVEahy7ShxSv2K4K41z',
-    password_content     => ':admin:$6$pIE/xAyP9mvBaewv$4GYFxC0SqonT6/x8qGcZXVCRLUVKODj9drDjdu/JJQ/Iw0Gg.aTkFzCjNAbaK4zcCHbphFz1g1HK18Z2bI92M0::Administrator:admin:changeme@example.com::',
-    package_name         => 'splunk',
-  }
-
   splunk_indexes { 'autobahn-log4net-index-homepath':
     section => 'ab_log4',
     setting => 'homePath',
