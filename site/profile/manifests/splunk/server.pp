@@ -79,7 +79,7 @@ class profile::splunk::server {
   }
 
   splunk_indexes { 'puppetserver-index-thawedpath':
-    section => 'ab_log4',
+    section => 'puppetserver',
     setting => 'thawedPath',
     value   => '$SPLUNK_DB/puppetserver/thaweddb',
     require => Class['::splunk'],
