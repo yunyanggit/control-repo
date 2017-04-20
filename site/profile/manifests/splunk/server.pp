@@ -87,6 +87,7 @@ class profile::splunk::server {
 
 
   ## PuppetServer logs
+  # https://docs.puppet.com/pe/latest/install_what_and_where.html#log-files-installed
   splunk_props { 'puppetserver-logs-message':
     section => 'puppetserver',
     setting => 'EXTRACT-message',
