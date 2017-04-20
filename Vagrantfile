@@ -10,6 +10,7 @@ Vagrant.configure('2') do |config|
     node.vm.provider "virtualbox" do |v|
       v.memory = 4096
     end
+    node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_bootstrap do |p|
       p.role = :master
     end
