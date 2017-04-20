@@ -86,6 +86,22 @@ class profile::splunk::server {
   }
 
 
+  ## PuppetServer logs
+  splunk_props { 'puppetserver-logs-message':
+    section => 'puppetserver',
+    setting => 'EXTRACT-message',
+    value   => '^[^,\n]*,\d+\s+(?P<level>\w+)',
+    require => Class['::splunk'],
+  }
+
+  splunk_props { 'puppetserver-logs-level':
+    section => 'puppetserver',
+    setting => 'EXTRACT-level',
+    value   => '^[^,\n]*,\d+\s+(?P<level>\w+)',
+    require => Class['::splunk'],
+  }
+
+  ## Autobahn log4net logs
   splunk_props { 'autobahn-log4net-extraction':
     section => 'Log4Net:Autobahn',
     setting => 'EXTRACT-level',
