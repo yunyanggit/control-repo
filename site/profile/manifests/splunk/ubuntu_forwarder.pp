@@ -8,7 +8,7 @@ class profile::splunk::ubuntu_forwarder {
     }
 
     class { '::splunk::forwarder':
-      splunk_user  => 'vagrant',
+      # splunk_user  => 'vagrant',
     }
     ->
       splunkforwarder_input { 'puppetserver-logs-index':
