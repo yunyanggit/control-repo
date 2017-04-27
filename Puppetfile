@@ -1,20 +1,22 @@
 forge 'http://forge.puppetlabs.com'
 
 # Modules discovered by generate-puppetfile
+mod 'badgerious/windows_env', '2.2.2'
+mod 'puppet/download_file', '2.1.0'
+mod 'puppet/iis', '1.4.0'
+mod 'puppet/staging', '2.2.0'
+mod 'puppet/windowsfeature', '2.1.0'
+mod 'puppetlabs/acl', '1.1.2'
+mod 'puppetlabs/chocolatey', '2.0.2'
+mod 'puppetlabs/dsc', '1.2.0'
+mod 'puppetlabs/inifile', '1.6.0'
+mod 'puppetlabs/powershell', '2.1.0'
+mod 'puppetlabs/reboot', '1.2.1'
+mod 'puppetlabs/registry', '1.1.4'
+mod 'puppetlabs/stdlib', '4.16.0'
+mod 'puppetlabs/windows', '3.0.0'
+mod 'puppetlabs/wsus_client', '1.0.3'
+
+# Modules discovered by generate-puppetfile
 # mod 'puppet/splunk', :git    => 'https://github.com/TraGicCode/puppet-splunk', :branch => 'feature/ui-prefs-conf'
 mod 'puppet/splunk', :git    => 'https://github.com/GCC-CM/puppet-splunk', :branch => 'master'
-
-mod 'puppet/staging', '2.2.0'
-mod 'puppetlabs/inifile', '1.6.0'
-mod 'puppetlabs/stdlib', '4.16.0'
-# Discovered elements from existing Puppetfile
-# Modules from the Puppet Forge
-# Versions should be updated to be the latest at the time you start
-# Modules from Git
-# Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
-#mod 'apache',
-#  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
-#  :commit => '83401079053dca11d61945bd9beef9ecf7576cbf'
-#mod 'apache',
-#  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
-#  :branch => 'docs_experiment'
