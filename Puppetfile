@@ -1,7 +1,9 @@
 forge 'http://forge.puppetlabs.com'
 
 # Modules discovered by generate-puppetfile
-mod 'puppet/splunk', :git    => 'https://github.com/TraGicCode/puppet-splunk', :branch => 'feature/ui-prefs-conf'
+# mod 'puppet/splunk', :git    => 'https://github.com/TraGicCode/puppet-splunk', :branch => 'feature/ui-prefs-conf'
+mod 'puppet/splunk', :git    => 'https://github.com/GCC-CM/puppet-splunk', :branch => 'master'
+
 mod 'puppet/staging', '2.2.0'
 mod 'puppetlabs/inifile', '1.6.0'
 mod 'puppetlabs/stdlib', '4.16.0'
