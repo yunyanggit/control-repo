@@ -1,7 +1,7 @@
 # == Class: profile::activedirectory::domaincontroller
 #
 class profile::activedirectory::domaincontroller {
-  class {'windows_ad':
+  class { 'windows_ad':
     install                => present,
     installmanagementtools => true,
     restart                => true,
@@ -9,8 +9,8 @@ class profile::activedirectory::domaincontroller {
     configure              => present,
     configureflag          => true,
     domain                 => 'forest',
-    domainname             => 'jre.local',
-    netbiosdomainname      => 'jre',
+    domainname             => 'tragiccode.local',
+    netbiosdomainname      => 'tragiccode',
     domainlevel            => '6',
     forestlevel            => '6',
     databasepath           => 'c:\\windows\\ntds',
