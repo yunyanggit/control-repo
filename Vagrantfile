@@ -9,6 +9,7 @@ Vagrant.configure('2') do |config|
     node.vm.synced_folder ".", "/vagrant"
     node.vm.provider "virtualbox" do |v|
       v.memory = 4096
+      v.linked_clone = true
     end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_bootstrap do |p|
@@ -29,6 +30,9 @@ Vagrant.configure('2') do |config|
     node.vm.hostname = 'windowsagent.local'
     node.vm.network :private_network, :ip => '10.20.1.3'
     node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
@@ -46,6 +50,9 @@ Vagrant.configure('2') do |config|
     node.vm.network :private_network, :ip => '10.20.1.4'
     node.vm.network "forwarded_port", guest: 8000, host: 8000
     node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
@@ -57,6 +64,9 @@ Vagrant.configure('2') do |config|
     node.vm.network :private_network, :ip => '10.20.1.5'
     node.vm.network "forwarded_port", guest: 8000, host: 8000
     node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
@@ -67,6 +77,9 @@ Vagrant.configure('2') do |config|
     node.vm.hostname = 'splunkforwarder'
     node.vm.network :private_network, :ip => '10.20.1.6'
     node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
@@ -79,6 +92,7 @@ Vagrant.configure('2') do |config|
     node.vm.box = 'mwrock/Windows2012R2'
     node.vm.provider "virtualbox" do |v|
       v.memory = 2048
+      v.linked_clone = true
     end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
