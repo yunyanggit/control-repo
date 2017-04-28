@@ -17,8 +17,8 @@ class profile::activedirectory::domaincontroller {
     logpath                => 'c:\\windows\\ntds',
     sysvolpath             => 'c:\\windows\\sysvol',
     installtype            => 'domain',
-    dsrmpassword           => 'password',
+    dsrmpassword           => 'PuppetRox123!',
     installdns             => 'yes',
-    localadminpassword     => 'password',
+    localadminpassword     => 'PuppetRox123!',
   }
 }
