@@ -77,6 +77,9 @@ Vagrant.configure('2') do |config|
     node.vm.hostname = 'domaincontroller'
     node.vm.network :private_network, :ip => '10.20.1.7'
     node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
