@@ -86,8 +86,8 @@ Vagrant.configure('2') do |config|
     end
   end
 
-  config.vm.define :domaincontroller do |node|
-    node.vm.hostname = 'domaincontroller'
+  config.vm.define :dc do |node|
+    node.vm.hostname = 'dc'
     node.vm.network :private_network, :ip => '10.20.1.7'
     node.vm.box = 'mwrock/Windows2012R2'
     node.vm.provider "virtualbox" do |v|
