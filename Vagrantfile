@@ -15,7 +15,9 @@ Vagrant.configure('2') do |config|
     node.vm.provision :pe_bootstrap do |p|
       p.role = :master
     end
-# sudo chmod 777 /etc/puppetlabs/code/environments/production/scripts/config_version.sh
+   # sudo chmod 777 /etc/puppetlabs/code/environments/production/scripts/config_version.sh
+   # I could event try recursively giving access but not sure if this will work.  Still need to test this
+   # sudo chown -R <puppetuser> /etc/puppetlabs
     node.vm.provision "shell", inline: <<-SHELL
           sudo ufw disable
           sudo puppet module install WhatsARanjit-node_manager --version 0.4.1
