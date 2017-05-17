@@ -24,7 +24,11 @@ Vagrant.configure('2') do |config|
           sudo puppet apply /vagrant/PuppetMaster.pp --verbose
           sudo puppet agent --test
           sudo puppet agent --test
-          sudo r10k deploy environment -pv
+
+          curl -k -X POST -H 'Content-Type: application/json' -d '{"login": "admin", "password": "puppetlabs"}' https://puppetmaster.local:4433/rbac-api/v1/auth/token >> /home/vagrant/.puppetlabs/token
+          puppet-code print-config
+          puppet-code status
+          puppet code deploy --all --wait --log-level debug
     SHELL
   end
 
