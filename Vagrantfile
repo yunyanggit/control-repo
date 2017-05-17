@@ -1,5 +1,5 @@
 Vagrant.configure('2') do |config|
-  config.pe_build.version = '2017.1.1'
+  config.pe_build.version = '2017.2.1'
 
   config.vm.define :puppetmaster do |node|
     node.vm.hostname = 'puppetmaster.local'
