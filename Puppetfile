@@ -8,5 +8,4 @@ mod 'puppetlabs/powershell', '2.1.0'
 mod 'puppetlabs/stdlib', '4.16.0'
 
 # Modules discovered by generate-puppetfile
-# mod 'puppet/splunk', :git    => 'https://github.com/TraGicCode/puppet-splunk', :branch => 'feature/ui-prefs-conf'
-mod 'puppet/splunk', :git    => 'https://github.com/GCC-CM/puppet-splunk', :branch => 'master'
+mod 'puppet/splunk', :git    => 'https://github.com/TraGicCode/puppet-splunk', :branch => 'feature/ui-prefs-conf'
