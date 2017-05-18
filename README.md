@@ -15,6 +15,8 @@ The Goal of this repository is to provide the ability to quickly spin up a puppe
 
 # Using Code Manager
 1.) Instal Pe-Client tools on your local workstation
+2.) Run the following to quickly configure PE Client tools
+> Configure-PEClientTools.ps1
 2.) Update your hosts file to have the following entry
 10.20.1.2     puppetmaster.local
 3.) Obtain a RBAC token so you can deploy environments
