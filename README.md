@@ -25,4 +25,6 @@ The Goal of this repository is to provide the ability to quickly spin up a puppe
 
 4.) Initiate a deployment of all environments
 
+> puppet-code print-config
+> puppet-code status
 > puppet-code deploy --all --wait --log-level info
