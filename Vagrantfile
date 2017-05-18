@@ -20,7 +20,7 @@ Vagrant.configure('2') do |config|
    # sudo chown -R <puppetuser> /etc/puppetlabs
     node.vm.provision "shell", inline: <<-SHELL
           sudo ufw disable
-          sudo puppet module install WhatsARanjit-node_manager --version 0.4.1
+          sudo puppet module install WhatsARanjit-node_manager --version 0.4.2
           sudo puppet apply /vagrant/PuppetMaster.pp --verbose
           sudo puppet agent --test
           sudo puppet agent --test
