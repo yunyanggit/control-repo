@@ -1,5 +1,5 @@
 Vagrant.configure('2') do |config|
-  config.pe_build.version = '2017.1.1'
+  config.pe_build.version = '2017.2.1'
 
   config.vm.define :puppetmaster do |node|
     node.vm.hostname = 'puppetmaster.local'
@@ -9,18 +9,21 @@ Vagrant.configure('2') do |config|
     node.vm.synced_folder ".", "/vagrant"
     node.vm.provider "virtualbox" do |v|
       v.memory = 4096
+      v.linked_clone = true
     end
+    node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_bootstrap do |p|
       p.role = :master
     end
-# sudo chmod 777 /etc/puppetlabs/code/environments/production/scripts/config_version.sh
+   # sudo chmod 777 /etc/puppetlabs/code/environments/production/scripts/config_version.sh
+   # I could event try recursively giving access but not sure if this will work.  Still need to test this
+   # sudo chown -R <puppetuser> /etc/puppetlabs
     node.vm.provision "shell", inline: <<-SHELL
           sudo ufw disable
-          sudo puppet module install WhatsARanjit-node_manager --version 0.4.1
+          sudo puppet module install WhatsARanjit-node_manager --version 0.4.2
           sudo puppet apply /vagrant/PuppetMaster.pp --verbose
           sudo puppet agent --test
           sudo puppet agent --test
-          sudo r10k deploy environment -pv
     SHELL
   end
 
@@ -28,6 +31,9 @@ Vagrant.configure('2') do |config|
     node.vm.hostname = 'windowsagent.local'
     node.vm.network :private_network, :ip => '10.20.1.3'
     node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
@@ -45,6 +51,9 @@ Vagrant.configure('2') do |config|
     node.vm.network :private_network, :ip => '10.20.1.4'
     node.vm.network "forwarded_port", guest: 8000, host: 8000
     node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
@@ -56,6 +65,9 @@ Vagrant.configure('2') do |config|
     node.vm.network :private_network, :ip => '10.20.1.5'
     node.vm.network "forwarded_port", guest: 8000, host: 8000
     node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
@@ -66,6 +78,23 @@ Vagrant.configure('2') do |config|
     node.vm.hostname = 'splunkforwarder'
     node.vm.network :private_network, :ip => '10.20.1.6'
     node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
+    node.vm.provision :hosts, :sync_hosts => true
+    node.vm.provision :pe_agent do |p|
+      p.master_vm = 'puppetmaster'
+    end
+  end
+
+  config.vm.define :dc do |node|
+    node.vm.hostname = 'dc'
+    node.vm.network :private_network, :ip => '10.20.1.7'
+    node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.linked_clone = true
+    end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision :pe_agent do |p|
       p.master_vm = 'puppetmaster'
