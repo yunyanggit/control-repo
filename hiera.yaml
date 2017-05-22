@@ -10,5 +10,6 @@
       path: "nodes/%{trusted.certname}.yaml"
       # Omitting datadir and data_hash to use defaults.
     - name: "common"
-      paths: "common.yaml"
+      path: "common.yaml"
       # Omitting datadir and data_hash to use defaults.
+      
