@@ -1,22 +1,10 @@
 fixtures:
   symlinks:
     profile: "#{source_dir}/site/profile"
-  forge_modules:
-    windows_ad:
-      repo: "jriviere/windows_ad"
-      ref: "0.3.2"
-    splunk:
-      repo: "puppet/splunk"
-      ref: "6.0.0"
-    staging:
-      repo: "puppet/staging"
-      ref: "2.2.0"
-    inifile:
-      repo: "puppetlabs/inifile"
-      ref: "1.6.0"
-    powershell:
-      repo: "puppetlabs/powershell"
-      ref: "2.1.0"
-    stdlib:
-      repo: "puppetlabs/stdlib"
-      ref: "4.17.0"
+  repositories:
+    windows_ad: 'https://github.com/insentia/windows_ad'
+    splunk: 'https://github.com/voxpupuli/puppet-splunk'
+    staging: 'https://github.com/voxpupuli/puppet-staging'
+    inifile: 'https://github.com/puppetlabs/puppetlabs-inifile'
+    powershell: 'https://github.com/puppetlabs/puppetlabs-powershell'
+    stdlib: 'https://github.com/puppetlabs/puppetlabs-stdlib'
