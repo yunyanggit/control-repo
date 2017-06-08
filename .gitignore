@@ -1,2 +1,4 @@
 .vagrant/
 .pe_build/
+.bundle/
+.vscode/
