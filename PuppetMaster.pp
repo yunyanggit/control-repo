@@ -15,3 +15,18 @@ node_group { 'PE Master - Customized':
   parent               => 'PE Master',
   provider             => 'https',
 }
+
+
+node_group { 'PE Agent - Customized':
+  ensure               => 'present',
+  rule                 => ['and', ['~', ['fact', 'aio_agent_version'], '.+']],
+  classes              => {
+    'puppet_enterprise::profile::agent' => {
+      'package_inventory_enabled' => true,
+    },
+  },
+  environment          => 'production',
+  override_environment => false,
+  parent               => 'PE Agent',
+  provider             => 'https',
+}
