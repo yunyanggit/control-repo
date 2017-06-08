@@ -1,15 +1,15 @@
 ---
-  version: 5
-  # generally you use the same backend for all levels of the hiearchy so this prevents
-  # having to duplicate this for every layer
-  defaults:
-    datadir: data
-    data_hash: yaml_data
-  hierarchy:
-    - name: "Per-node data"
-      path: "nodes/%{trusted.certname}.yaml"
-      # Omitting datadir and data_hash to use defaults.
-    - name: "common"
-      path: "common.yaml"
-      # Omitting datadir and data_hash to use defaults.
-      
+version: 5
+# generally you use the same backend for all levels of the hiearchy so this prevents
+# having to duplicate this for every layer
+defaults:
+  datadir: data
+  data_hash: yaml_data
+hierarchy:
+  - name: "Per-node data"
+    path: "nodes/%{trusted.certname}.yaml"
+    # Omitting datadir and data_hash to use defaults.
+  - name: "common"
+    path: "common.yaml"
+    # Omitting datadir and data_hash to use defaults.
+    
