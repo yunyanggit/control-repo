@@ -4,7 +4,7 @@ class profile::puppetenterprise::puppetserver(
 
    file{ '/etc/puppetlabs/license.key':
     ensure => present,
-    source => $source,
+    source => $file_source_pe_license,
     notify => Service['pe-console-services'],
   }
 
