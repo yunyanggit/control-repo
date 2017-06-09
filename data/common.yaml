@@ -2,3 +2,4 @@
 puppet_enterprise::master::code_manager::post_environment_hooks:
   - url: 'https://puppetmaster.local:4433/classifier-api/v1/update-classes'
     use-client-ssl: true
+puppet_enterprise::license_key_path: '/etc/puppetlabs/pe-license.key'
