@@ -1,4 +1,4 @@
-class profile::puppetserver(
+class profile::puppetenterprise::puppetserver(
     String $file_source_pe_license = 'puppet:///modules/profile/puppetenterprise/puppetserver/license.key'
 ) {
 
