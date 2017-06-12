@@ -1,5 +1,7 @@
 HOSTS:
-  ubuntu-server-1404-x64:
+  ubuntu-server-1604-x64:
+    pe_dir: C://Windows//Temp
+    pe_ver: '2017.2.1'
     roles:
       - master
       - database
@@ -10,3 +12,5 @@ HOSTS:
     hypervisor: vagrant
 CONFIG:
   type: pe
+  pe_ver: '2017.2.1'
+  log_level: debug

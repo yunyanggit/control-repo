@@ -26,9 +26,6 @@ hw4EbNX/3aBd7YdStysVAq45pmp06drE57xNNB6pXE0zX5IJL4hmXXeXxx12E6nV
 EOM
 
 hosts.each do |host|
-  on(master, "sudo mkdir -p /opt/enterprise/dists", acceptable_exit_codes: [0, 1, 7])
-  on(master, "sudo echo '2017.2.1-g57b669e' >> /opt/enterprise/dists/LATEST", acceptable_exit_codes: [0, 1, 7])
-  on(master, "sudo curl -L -s -o /opt/enterprise/dists/puppet-enterprise-2017.2.1-ubuntu-16.04-amd64.tgz 'https://pm.puppetlabs.com/cgi-bin/download.cgi?dist=ubuntu&rel=16.04&arch=amd64&ver=2017.2.1'", acceptable_exit_codes: [0, 1, 7])
   run_puppet_install_helper
   # run_puppet_install_helper
   # install_cert_on_windows(host, 'geotrustglobal', GEOTRUST_GLOBAL_CA)
