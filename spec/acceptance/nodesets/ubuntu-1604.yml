@@ -1,14 +1,13 @@
 HOSTS:
-  ubuntu-server-1604-x64:
+   ubuntu-1604-x64:
     pe_dir: C://Windows//Temp
     pe_ver: '2017.2.1'
     roles:
       - master
-      - database
+      - database  
       - dashboard
     platform: ubuntu-16.04-amd64
     box: puppetlabs/ubuntu-16.04-64-nocm
-    box_url: https://vagrantcloud.com/puppetlabs/boxes/ubuntu-14.04-64-nocm
     hypervisor: vagrant
 CONFIG:
   type: pe

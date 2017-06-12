@@ -26,6 +26,7 @@ hw4EbNX/3aBd7YdStysVAq45pmp06drE57xNNB6pXE0zX5IJL4hmXXeXxx12E6nV
 EOM
 
 hosts.each do |host|
+  # ubuntu-server-1604-x64
   run_puppet_install_helper
   # run_puppet_install_helper
   # install_cert_on_windows(host, 'geotrustglobal', GEOTRUST_GLOBAL_CA)
