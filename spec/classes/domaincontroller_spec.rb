@@ -3,7 +3,11 @@ require 'spec_helper'
 describe 'profile::domaincontroller' do
   context 'with default values for all parameters' do
     let(:params) {{
+      :domain_name                      => 'tragiccode.local',
+      :domain_net_bios_name             => 'TRAGICCODE',
+      :safe_mode_administrator_user     => 'billclinton',
       :safe_mode_administrator_password => 'TestPassword123!',
+      :domain_administrator_user        => 'bobdole',
       :domain_administrator_password    => 'TestPassword321@',
     }}
     # Needed in order to get that 100% code coverage
@@ -18,11 +22,11 @@ describe 'profile::domaincontroller' do
         :ensure                            => 'present',
         :dsc_domainname                    => 'tragiccode.local',
         :dsc_safemodeadministratorpassword => {
-          'user'     => 'Administrator',
+          'user'     => 'billclinton',
           'password' => 'TestPassword123!',
         },
         :dsc_domainadministratorcredential => {
-          'user'     => 'Administrator2',
+          'user'     => 'bobdole',
           'password' => 'TestPassword321@',
         },
         :dsc_domainnetbiosname             => 'TRAGICCODE',

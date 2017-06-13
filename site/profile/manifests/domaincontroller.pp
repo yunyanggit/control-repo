@@ -3,7 +3,7 @@
 #
 class profile::domaincontroller(
   String $domain_name,
-  String[15] $domain_net_bios_name, 
+  String[1, 15] $domain_net_bios_name,
   String $safe_mode_administrator_user,
   String $safe_mode_administrator_password,
   String $domain_administrator_user,

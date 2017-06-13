@@ -1,7 +1,7 @@
 ---
 profile::domaincontroller::domain_name: 'tragiccode.local'
 profile::domaincontroller::domain_net_bios_name: 'TRAGICCODE'
-profile::domaincontroller::safe_mode_administrator_user: 'billclinton'domain_name
+profile::domaincontroller::safe_mode_administrator_user: 'billclinton'
 profile::domaincontroller::safe_mode_administrator_password: 'Puppet!12345'
 profile::domaincontroller::domain_administrator_user: 'bobdole'
 profile::domaincontroller::domain_administrator_password: 'Puppet!12345'
