@@ -1,1 +1,2 @@
 ---
+profile::domaincontroller::safe_mode_administrator_password: 'Puppet!12345'

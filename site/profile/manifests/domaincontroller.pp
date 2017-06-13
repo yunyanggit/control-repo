@@ -1,7 +1,9 @@
 # Class: profile::domaincontroller
 #
 #
-class profile::domaincontroller {
+class profile::domaincontroller(
+  String $safe_mode_administrator_password,
+) {
 
   dsc_windowsfeature { 'AD-Domain-Services':
     dsc_ensure => 'present',
@@ -13,13 +15,13 @@ class profile::domaincontroller {
     dsc_domainname                    => 'tragiccode.local',
     dsc_safemodeadministratorpassword => {
       'user'     => 'Administrator',
-      'password' => 'Puppet!12345',
+      'password' => $safe_mode_administrator_password,
     },
     # Username & password to be assigned to our domain administrator account if this is our first domain in a forest.
     # else it's needed to join a new domain to an existing forest
     dsc_domainadministratorcredential => {
       'user'     => 'Administrator2',
-      'password' => 'Puppet!12345',
+      'password' => $safe_mode_administrator_password,
     },
     dsc_domainnetbiosname             => 'TRAGICCODE', # 15 character limit...
     dsc_databasepath                  => 'C:\\Windows\\NTDS',
