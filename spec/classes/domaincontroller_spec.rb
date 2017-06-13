@@ -11,7 +11,7 @@ describe 'profile::domaincontroller' do
         :dsc_name   => 'AD-Domain-Services',
     }) }
 
-    it { should contain_dsc_xaddomain('globalcustomcommerce.com').with({
+    it { should contain_dsc_xaddomain('tragiccode.local').with({
         :ensure                            => 'present',
         :dsc_domainname                    => 'tragiccode.local',
         :dsc_safemodeadministratorpassword => {
