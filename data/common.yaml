@@ -1,2 +1,5 @@
 ---
+profile::domaincontroller::safe_mode_administrator_user: 'billclinton'
 profile::domaincontroller::safe_mode_administrator_password: 'Puppet!12345'
+profile::domaincontroller::domain_administrator_user: 'bobdole'
+profile::domaincontroller::domain_administrator_password: 'Puppet!12345'

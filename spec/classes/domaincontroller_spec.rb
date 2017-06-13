@@ -4,6 +4,7 @@ describe 'profile::domaincontroller' do
   context 'with default values for all parameters' do
     let(:params) {{
       :safe_mode_administrator_password => 'TestPassword123!',
+      :domain_administrator_password    => 'TestPassword321@',
     }}
     # Needed in order to get that 100% code coverage
     it { should contain_class('profile::domaincontroller') }
@@ -22,7 +23,7 @@ describe 'profile::domaincontroller' do
         },
         :dsc_domainadministratorcredential => {
           'user'     => 'Administrator2',
-          'password' => 'TestPassword123!',
+          'password' => 'TestPassword321@',
         },
         :dsc_domainnetbiosname             => 'TRAGICCODE',
         :dsc_databasepath                  => 'C:\\Windows\\NTDS',

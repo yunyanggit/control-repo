@@ -3,6 +3,7 @@
 #
 class profile::domaincontroller(
   String $safe_mode_administrator_password,
+  String $domain_administrator_password,
 ) {
 
   dsc_windowsfeature { 'AD-Domain-Services':
@@ -21,7 +22,7 @@ class profile::domaincontroller(
     # else it's needed to join a new domain to an existing forest
     dsc_domainadministratorcredential => {
       'user'     => 'Administrator2',
-      'password' => $safe_mode_administrator_password,
+      'password' => $domain_administrator_password,
     },
     dsc_domainnetbiosname             => 'TRAGICCODE', # 15 character limit...
     dsc_databasepath                  => 'C:\\Windows\\NTDS',
