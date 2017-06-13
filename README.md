@@ -76,3 +76,13 @@ To decrypt the eyaml file and view the contents from the command line run the fo
 password: >
   DEC::PKCS7[hello there bob!]!
 ```
+
+
+# Setting up master for hiera-eyaml
+First you must install hiera-eyaml on the puppet server.
+```powershell
+    > sudo /opt/puppetlabs/bin/puppetserver gem install hiera-eyaml
+    > service pe-puppetserver reload
+```
+
+The restart is needed in order to load this gem into puppetserver for utilization

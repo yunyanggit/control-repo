@@ -8,7 +8,7 @@ class profile::domaincontroller {
     dsc_name   => 'AD-Domain-Services',
   }
 
-  dsc_xaddomain { 'globalcustomcommerce.com':
+  dsc_xaddomain { 'tragiccode.local':
     ensure                            => 'present',
     dsc_domainname                    => 'tragiccode.local',
     dsc_safemodeadministratorpassword => {
