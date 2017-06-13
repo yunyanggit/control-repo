@@ -6,7 +6,7 @@ node_group { 'PE Master - Customized':
       'r10k_remote'                 => 'https://github.com/TraGicCode/control-repo.git',
       'code_manager_auto_configure' => true,
     },
-    'pe_repo::platform::windows_x86_64' => {
+    'pe_repo::platform::windows_x86_64'  => {
 
     },
   },
