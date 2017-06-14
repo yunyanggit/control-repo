@@ -1,5 +1,13 @@
-# Class: profile::domaincontroller
+# This class is used to install a new active directory domaincontroller.
 #
+# This class should not be called directly, but rather is used by our roles.
+#
+# @param domain_name [String] The new domain you're creating.
+# @param domain_net_bios_name [String[1, 15]] The domain's net bios name.
+# @param safe_mode_administrator_user [String] The user for booting the domaincontroller into recovery mode.
+# @param safe_mode_administrator_password [String] The password for booting the domaincontroller into recovery mode.
+# @param domain_administrator_user [String] The user for the domain administrator account for the domain.
+# @param domain_administrator_password [String] The password for the domain administrator account for the domain.
 #
 class profile::domaincontroller(
   String $domain_name,
