@@ -18,6 +18,13 @@ Vagrant.configure('2') do |config|
 
     node.vm.provision "shell", inline: <<-SHELL
           sudo ufw disable
+
+          # Setup puppet server to handle hiera-eyaml
+          sudo /opt/puppetlabs/bin/puppetserver gem install hiera-eyaml
+          sudo mkdir -p /etc/puppetlabs/puppet/keys/
+          sudo cp /vagrant/keys/* /etc/puppetlabs/puppet/keys/
+          sudo chown pe-puppet:pe-puppet /etc/puppetlabs/puppet/keys/*
+
           sudo puppet module install WhatsARanjit-node_manager --version 0.4.2
           sudo puppet apply /vagrant/PuppetMaster.pp --verbose
           sudo puppet agent --test

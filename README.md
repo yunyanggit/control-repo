@@ -86,3 +86,70 @@ First you must install hiera-eyaml on the puppet server.
 ```
 
 The restart is needed in order to load this gem into puppetserver for utilization
+
+
+
+# Encrypting the contents of a file
+You can point eyaml at a file to encrypt all of its contents to be pasted into hiera.  Example
+```powershell
+    > bundle exec eyaml encrypt -f C:\Windows\System32\drivers\etc\hosts
+```
+
+```
+hosts_file_content: >
+    ENC[PKCS7,MIIFHQYJKoZIhvcNAQcDoIIFDjCCBQoCAQAxggEhMIIBHQIBADAFMAACAQEw
+    DQYJKoZIhvcNAQEBBQAEggEAmBDRVh1Ti0SuVjdeeKuvkdAJDKkHSsFTeCqz
+    wA53ykA3U3iqramFv0tggVIVmFgENvIkMkC0AtYOAIUvIA0Ez6RqIgVL8mck
+    /nf8zrlrpA1He1veibZZkxm+v4nGp5gik6SgP94V8RgK2eJRzf++0N+TJ5bP
+    y8mSjLESmAHiEwD9nv1oEEvl6MHGj3obmW3upTFxarz7Y9qSBVoPeIck3OT3
+    6T4muadCjcAX568BSCPT4aInkGmOqN48xXPwP5cybnQtAP1CPsDdnA4Qqi8X
+    gYOJkeRfW5Zmu9PKDiZ0CDdI1ZQgl0ScGrZegIOvqiOjEWLGI+rMDZBFZfwN
+    rsXBhzCCA94GCSqGSIb3DQEHATAdBglghkgBZQMEASoEENLR68D+49dWDXC/
+    Yp1B4ZuAggOw1QBd+qSWJ5stG46xGpbKUmgoJaj+YMJlbeaNFfY9eVClnjhN
+    nJQirUPXlg0KHgn3rtabXS2LcVnLkd0anRziZROoaPAzkmXfha7t3AHw0C2m
+    39H/QodKKopwxggqb42doUa+W650kmA4ZVn7LN3H5BQACSDscdL6ZgNDRbBO
+    3hVXp7FuToqCzjSjuQd+U/gbDB2jhTHtA5GB80ZT1OoS7NAWXGwkhN2/t1BM
+    LOQmaPul1Kj7G8WaokQiOVL3IByrrVp4CNjdt9v1d4K1r9Gziwnf978FLItT
+    JORrE7scGBlsMBQ00hqvzqbKgs73nxiamMB5M/IkgjtrOQjgZpy9a2HrOrXj
+    Z4DKAE9shGz0h3opXUVZuMHHvkvSBRb4ta1ZYkROChDCRNza5s7AwhhWiyrn
+    CZgu+n9+W2Ft09fJ82yluvZ5KGOehSQ9+i2a3qWDR769ARH768pHNQaAx1NJ
+    pVfCf0jZT5zTUpHblUgRrTX0XofDnnu+8fRbkNwHEV2S9gubxI+sApQv5JtH
+    XgHYGLiSPxeRG8jo861TkoizOOTcrB+61Me456eHzEIc4CPEO/TRYmaILjYu
+    yUB8ctq0Y5yPl9jghwWKu5j9R33cGlLZTBgoGaNojWegZ4FwnBK0hicKu836
+    yefYMAzAMcO4ZS9qHwB86fhD0L4Y869dWSWFQHX3Hhh35LGeWk6zpAwcnn8g
+    +3KOrsOGV1FeyRLlbDF9ep9Pcs/9jMatYCptg9cLH/rvVkYF45d4ALvgudEu
+    H/bwGUCDh1V1S5C5etueIoCXZr1gZqQrwWAaYg43YKf1MCj5IHFmgwtr5Tml
+    tv2Vt9hh0+Nyj0J7+gzjcx6iDrOd9Lcy3elnVQl6AAD5jUYKVzxs4wqXHHmH
+    bNwiNE6dvY1JLjz4SccD0paCcBFT/5q56yGyOaqJDMNYVYX+KM1SKPcvjwR7
+    HHAavI4a9t05VH0/stiGeDS77ZMutXQA17xpAy0JAjKj5ay8WhLr8ds7aXtp
+    8rfTf8sVONtK7BmgwuyHHrk7bj9hEx8O96L3QqHRK0lvRtr9xQ5pdSQ9ggp7
+    8JBKLkOYjACIFskQhXP2gmEpIvqGKWVNVOAXgS116rMVxZwj/9iz84Nvoi6k
+    6gtOimkiCo5QzV9JiaUI3+ppXi/qL454LiEy9iSNSKbPOVFjROZH/7H/oQE4
+    7yjjkiED7kWN4NQ052Q+ncpcIT+HngnQ+WN4Lx9VPEcUA4lGWYpIkZd1+rMn
+    Ee1h5kT3aV0=]
+```
+
+# Encrypting a password
+If you don't want the password to be visible from your screen as you encrypt something use the following ot be prompted for the password
+```powershell
+    > bundle exec eyaml encrypt -p
+```
+
+# label
+By default when you encrypt something the hiera key is called 'block' to auto create the label so it's a straight copy and paste from stdout to hiera do the following
+```powershell
+    > bundle exec eyaml encrypt -l 'some_easy_to_use_label' -s 'yourSecretString'
+```
+
+```
+some_easy_to_use_label: >
+    ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEw
+    DQYJKoZIhvcNAQEBBQAEggEAmdDNxHOjsajuh0KXJFiEh1OuPq3HvIhaoDfx
+    28sNWf/3Gy0fzSmbciKUqrpEneZtB7pBs9G7hXIqr+vpcG0uj6wmme5ioA2r
+    oIe2CZZeapXCdi6+zghABYA8Vtx/B/ZhEzFEHBMV28ipAl45EB2wimR9M8dH
+    L6Das7BjmOMOXwEu9MIubs6QmzXE0dNHxPa1ldDPT4+nzCjLcSLj88c0M2uK
+    pRU9IZQjcXor3cbrkEzoJZcMUxXXM/UPlXgtu1OmhlcTK3yvxoWkFBoTLgyL
+    k/tXSteG0boeOaHkJ3UOzfcWGWLVHZ/+FCuw3FK+34mgLi4IpyAzvn4KJEkR
+    U0/ptTBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBB/imFWp4D9XOu6T50u
+    9Z/4gCB8t4dl5bFy/OEDxKMRf6eCTFh77DfhdamKWvEK94l52g==]
+```
