@@ -1,7 +1,6 @@
 forge 'http://forge.puppetlabs.com'
 
 # Modules discovered by generate-puppetfile
-mod 'binford2k/node_encrypt', '0.2.5'
 mod 'node_encrypt',
   :git    => 'https://github.com/binford2k/binford2k-node_encrypt',
   :commit => 'd021a17d34e726affafa3290577a6da563b251b9'
