@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe 'profile::domaincontroller' do
   context 'with default values for all parameters' do
+    sensitive_value_redacted_message = '#<Sensitive [value redacted]'
     let(:params) {{
       :domain_name                      => 'tragiccode.local',
       :domain_net_bios_name             => 'TRAGICCODE',
@@ -21,20 +22,13 @@ describe 'profile::domaincontroller' do
     it { should contain_dsc_xaddomain('tragiccode.local').with({
         :ensure                            => 'present',
         :dsc_domainname                    => 'tragiccode.local',
-        :dsc_safemodeadministratorpassword => {
-          'user'     => 'billclinton',
-          'password' => 'TestPassword123!',
-        },
-        :dsc_domainadministratorcredential => {
-          'user'     => 'bobdole',
-          'password' => 'TestPassword321@',
-        },
         :dsc_domainnetbiosname             => 'TRAGICCODE',
         :dsc_databasepath                  => 'C:\\Windows\\NTDS',
         :dsc_logpath                       => 'C:\\Windows\\NTDS',
         :dsc_sysvolpath                    => 'C:\\Windows\\SYSVOL',
         :require                           => 'Dsc_windowsfeature[AD-Domain-Services]',
-    }) }
+    }).with_dsc_domainadministratorcredential(/#{Regexp.escape(sensitive_value_redacted_message)}/)
+      .with_dsc_safemodeadministratorpassword(/#{Regexp.escape(sensitive_value_redacted_message)}/) }
 
     it { should contain_reboot('dsc_reboot').with(
         :message => 'DSC has requested a reboot',

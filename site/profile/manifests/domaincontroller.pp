@@ -17,10 +17,10 @@ class profile::domaincontroller(
   String $domain_administrator_user,
   String $domain_administrator_password,
 ) {
-  
+
   redact('safe_mode_administrator_password')
   redact('domain_administrator_password')
-  
+
   dsc_windowsfeature { 'AD-Domain-Services':
     dsc_ensure => 'present',
     dsc_name   => 'AD-Domain-Services',
