@@ -1,18 +1,17 @@
 require 'spec_helper'
 
-describe 'profile::domaincontroller' do
+describe 'profile::activedirectory::domaincontroller' do
   context 'with default values for all parameters' do
     sensitive_value_redacted_message = '#<Sensitive [value redacted]'
     let(:params) {{
       :domain_name                      => 'tragiccode.local',
       :domain_net_bios_name             => 'TRAGICCODE',
-      :safe_mode_administrator_user     => 'billclinton',
       :safe_mode_administrator_password => 'TestPassword123!',
       :domain_administrator_user        => 'bobdole',
       :domain_administrator_password    => 'TestPassword321@',
     }}
     # Needed in order to get that 100% code coverage
-    it { should contain_class('profile::domaincontroller') }
+    it { should contain_class('profile::activedirectory::domaincontroller') }
 
     it { should contain_dsc_windowsfeature('AD-Domain-Services').with({
         :dsc_ensure => 'present',

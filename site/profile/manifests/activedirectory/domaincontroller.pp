@@ -4,15 +4,13 @@
 #
 # @param domain_name [String] The new domain you're creating.
 # @param domain_net_bios_name [String[1, 15]] The domain's net bios name.
-# @param safe_mode_administrator_user [String] The user for booting the domaincontroller into recovery mode.
 # @param safe_mode_administrator_password [String] The password for booting the domaincontroller into recovery mode.
 # @param domain_administrator_user [String] The user for the domain administrator account for the domain.
 # @param domain_administrator_password [String] The password for the domain administrator account for the domain.
 #
-class profile::domaincontroller(
+class profile::activedirectory::domaincontroller(
   String $domain_name,
   String[1, 15] $domain_net_bios_name,
-  String $safe_mode_administrator_user,
   String $safe_mode_administrator_password,
   String $domain_administrator_user,
   String $domain_administrator_password,
@@ -30,7 +28,6 @@ class profile::domaincontroller(
     ensure                            => 'present',
     dsc_domainname                    => $domain_name,
     dsc_safemodeadministratorpassword => {
-      'user'     => $safe_mode_administrator_user,
       'password' => Sensitive($safe_mode_administrator_password),
     },
     # Username & password to be assigned to our domain administrator account if this is our first domain in a forest.
@@ -51,4 +48,19 @@ class profile::domaincontroller(
     when    => 'pending',
     require => Dsc_xaddomain[$domain_name],
   }
+
+  dsc_xaduser { 'ad_principal_manager':
+      dsc_ensure      => 'present',
+      dsc_username    => 'ad_principal_manager',
+      dsc_password    => Sensitive('b9ab97f633c2aaef66c37b00f003c8ba'),
+      dsc_description => 'Managed by Puppet! Changes made manually may be lost.',
+    }
+
+    dsc_xadgroup { 'Domain Admins':
+      dsc_ensure           => 'present',
+      dsc_memberstoinclude => ['ad_principal_manager'],
+      dsc_category         => 'Security',
+      dsc_groupscope       => 'Global',
+      dsc_description      => 'Managed by Puppet! Changes made manually may be lost.',
+    }
 }
