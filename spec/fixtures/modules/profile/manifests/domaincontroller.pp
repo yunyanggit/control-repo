@@ -18,8 +18,8 @@ class profile::domaincontroller(
   String $domain_administrator_password,
 ) {
   
-  node_encrypt::redact('safe_mode_administrator_password')
-  node_encrypt::redact('domain_administrator_password')
+  redact('safe_mode_administrator_password')
+  redact('domain_administrator_password')
   
   dsc_windowsfeature { 'AD-Domain-Services':
     dsc_ensure => 'present',
