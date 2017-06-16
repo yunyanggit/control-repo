@@ -28,6 +28,7 @@ class profile::activedirectory::domaincontroller(
     ensure                            => 'present',
     dsc_domainname                    => $domain_name,
     dsc_safemodeadministratorpassword => {
+      'user'     => 'this is ignored', # this is ignored...... its a PSCredential thing...
       'password' => Sensitive($safe_mode_administrator_password),
     },
     # Username & password to be assigned to our domain administrator account if this is our first domain in a forest.
