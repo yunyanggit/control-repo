@@ -48,19 +48,4 @@ class profile::activedirectory::domaincontroller(
     when    => 'pending',
     require => Dsc_xaddomain[$domain_name],
   }
-
-  dsc_xaduser { 'ad_principal_manager':
-      dsc_ensure      => 'present',
-      dsc_username    => 'ad_principal_manager',
-      dsc_password    => Sensitive('b9ab97f633c2aaef66c37b00f003c8ba'),
-      dsc_description => 'Managed by Puppet! Changes made manually may be lost.',
-    }
-
-    dsc_xadgroup { 'Domain Admins':
-      dsc_ensure           => 'present',
-      dsc_memberstoinclude => ['ad_principal_manager'],
-      dsc_category         => 'Security',
-      dsc_groupscope       => 'Global',
-      dsc_description      => 'Managed by Puppet! Changes made manually may be lost.',
-    }
 }
