@@ -34,8 +34,8 @@ describe 'profile::activedirectory::domaincontroller' do
     }).with_dsc_domainadministratorcredential(/#{Regexp.escape(sensitive_value_redacted_message)}/)
       .with_dsc_safemodeadministratorpassword(/#{Regexp.escape(sensitive_value_redacted_message)}/) }
 
-    it { should contain_reboot('dsc_reboot').with(
-        :message => 'DSC has requested a reboot',
+    it { should contain_reboot('new_domain_controller_reboot').with(
+        :message => 'New domain controller installed and is causing a reboot since one is pending',
         :when    => 'pending',
         :require => 'Dsc_xaddomain[tragiccode.local]',
     ) }

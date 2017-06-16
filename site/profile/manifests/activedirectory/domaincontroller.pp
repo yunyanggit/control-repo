@@ -49,8 +49,8 @@ class profile::activedirectory::domaincontroller(
     require                           => Dsc_windowsfeature['AD-Domain-Services'],
   }
 
-  reboot { 'dsc_reboot':
-    message => 'DSC has requested a reboot',
+  reboot { 'new_domain_controller_reboot':
+    message => 'New domain controller installed and is causing a reboot since one is pending',
     when    => 'pending',
     require => Dsc_xaddomain[$domain_name],
   }
