@@ -1,5 +1,5 @@
 ---
-profile::domaincontroller::domain_name: 'tragiccode.local'
-profile::domaincontroller::domain_net_bios_name: 'TRAGICCODE'
-profile::domaincontroller::safe_mode_administrator_user: 'billclinton'
-profile::domaincontroller::domain_administrator_user: 'bobdole'
+profile::activedirectory::domaincontroller::domain_name: 'tragiccode.local'
+profile::activedirectory::domaincontroller::domain_net_bios_name: 'TRAGICCODE'
+profile::activedirectory::domaincontroller::safe_mode_administrator_user: 'billclinton'
+profile::activedirectory::domaincontroller::domain_administrator_user: 'bobdole'
