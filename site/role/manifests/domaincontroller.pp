@@ -6,6 +6,6 @@ class role::domaincontroller {
   include profile::activedirectory::domaincontroller
   include profile::activedirectory::rbac
 
-  Class['profile::activedirectory::domaincontroller']
-  -> Class['profile::activedirectory::rbac']
+  # Class['profile::activedirectory::domaincontroller']
+  # -> Class['profile::activedirectory::rbac']
 }
