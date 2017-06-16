@@ -1,5 +1,5 @@
 ---
-profile::domaincontroller::safe_mode_administrator_password: >
+profile::activedirectory::domaincontroller::safe_mode_administrator_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
     DQYJKoZIhvcNAQEBBQAEggEAUOKUKzMQ8quOG+T2SJtZrAk3pnR8QQU7qXsx
     ou4rLYUCTYkGX1Vjpu3u47XIIi1klT5rGDXRQTQuG5TcZtj2hvaWpPEM5f+Z
@@ -9,7 +9,7 @@ profile::domaincontroller::safe_mode_administrator_password: >
     L0C+M/egMqEDlI0DAab39+o0QBudhPp9RsuyF668IESB6dy07OzRbholSMhw
     sdnvczA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCCRG3Ta2E97WgirRzT
     n0HigBBK7g9PhQslsVYGRojWUiRC]
-profile::domaincontroller::domain_administrator_password: >
+profile::activedirectory::domaincontroller::domain_administrator_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
     DQYJKoZIhvcNAQEBBQAEggEAUOKUKzMQ8quOG+T2SJtZrAk3pnR8QQU7qXsx
     ou4rLYUCTYkGX1Vjpu3u47XIIi1klT5rGDXRQTQuG5TcZtj2hvaWpPEM5f+Z
