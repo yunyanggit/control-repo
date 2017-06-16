@@ -13,6 +13,11 @@ describe 'profile::activedirectory::domaincontroller' do
     # Needed in order to get that 100% code coverage
     it { should contain_class('profile::activedirectory::domaincontroller') }
 
+    it { should contain_dsc_windowsfeature('RSAT-ADDS').with({
+        :dsc_ensure => 'present',
+        :dsc_name   => 'RSAT-ADDS',
+    }) }
+
     it { should contain_dsc_windowsfeature('AD-Domain-Services').with({
         :dsc_ensure => 'present',
         :dsc_name   => 'AD-Domain-Services',

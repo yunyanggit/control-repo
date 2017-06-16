@@ -18,6 +18,11 @@ class profile::activedirectory::domaincontroller(
 
   redact('safe_mode_administrator_password')
   redact('domain_administrator_password')
+  
+  dsc_windowsfeature { 'RSAT-ADDS':
+    dsc_ensure => 'present',
+    dsc_name   => 'RSAT-ADDS',
+  }
 
   dsc_windowsfeature { 'AD-Domain-Services':
     dsc_ensure => 'present',
