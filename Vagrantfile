@@ -35,7 +35,7 @@ Vagrant.configure('2') do |config|
   config.vm.define :windowsagent do |node|
     node.vm.hostname = 'windowsagent.local'
     node.vm.network :private_network, :ip => '10.20.1.3'
-    node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.box = 'tragiccode/windows-2016-standard'
     node.vm.provider "virtualbox" do |v|
       v.linked_clone = true
     end
@@ -82,7 +82,7 @@ Vagrant.configure('2') do |config|
   config.vm.define :splunkforwarder do |node|
     node.vm.hostname = 'splunkforwarder'
     node.vm.network :private_network, :ip => '10.20.1.6'
-    node.vm.box = 'mwrock/Windows2012R2'
+    node.vm.box = 'tragiccode/windows-2016-standard'
     node.vm.provider "virtualbox" do |v|
       v.linked_clone = true
     end
