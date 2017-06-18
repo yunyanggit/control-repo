@@ -29,13 +29,12 @@ Vagrant.configure('2') do |config|
           sudo puppet module install WhatsARanjit-node_manager --version 0.4.2
           sudo puppet apply /vagrant/PuppetMaster.pp --verbose
           
+          sudo puppet agent --test
+          sudo puppet agent --test
+
           # Automate first codemanager deploy
           sudo echo 'puppetlabs' | puppet access login --username admin
           puppet code deploy --all --wait
-
-
-          sudo puppet agent --test
-          sudo puppet agent --test
     SHELL
   end
 
