@@ -2,6 +2,7 @@
 puppet_enterprise::master::code_manager::post_environment_hooks:
   - url: 'https://%{trusted.certname}:4433/classifier-api/v1/update-classes'
     use-client-ssl: true
+pe_puppetdb::pe::listen_address: 0.0.0.0
 profile::activedirectory::domaincontroller::domain_name: 'tragiccode.local'
 profile::activedirectory::domaincontroller::domain_net_bios_name: 'TRAGICCODE'
 profile::activedirectory::domaincontroller::safe_mode_administrator_user: 'billclinton'
