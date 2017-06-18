@@ -5,9 +5,9 @@ class profile::activedirectory::groups(
 
 ) {
 
-  dsc_xadgroup { 'Domain Admins2':
+  dsc_xadgroup { 'Domain Admins':
     dsc_ensure           => 'present',
-    dsc_groupname        => 'Domain Admins2',
+    dsc_groupname        => 'Domain Admins',
     dsc_memberstoinclude => ['ad_principal_manager'],
     dsc_category         => 'Security',
     dsc_groupscope       => 'Global',
