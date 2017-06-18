@@ -5,6 +5,7 @@ Vagrant.configure('2') do |config|
     node.vm.hostname = 'puppetmaster.local'
     node.vm.network :private_network, :ip => '10.20.1.2'
     node.vm.network "forwarded_port", guest: 8081, host: 8081
+    node.vm.network "forwarded_port", guest: 8080, host: 8080
     node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
     node.vm.synced_folder ".", "/vagrant"
     node.vm.provider "virtualbox" do |v|
