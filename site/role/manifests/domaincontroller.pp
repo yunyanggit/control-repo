@@ -4,8 +4,10 @@ class role::domaincontroller {
   #All roles should include the base profile
   include profile::base
   include profile::activedirectory::domaincontroller
-  include profile::activedirectory::rbac
+  include profile::activedirectory::groups
+  include profile::activedirectory::users
 
   Class['profile::activedirectory::domaincontroller']
-  -> Class['profile::activedirectory::rbac']
+  -> Class['profile::activedirectory::groups']
+  -> Class['profile::activedirectory::users']
 }

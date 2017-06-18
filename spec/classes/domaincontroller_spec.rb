@@ -36,6 +36,7 @@ describe 'profile::activedirectory::domaincontroller' do
 
     it { should contain_reboot('new_domain_controller_reboot').with(
         :message => 'New domain controller installed and is causing a reboot since one is pending',
+        :apply   => 'immediately',
         :when    => 'pending',
         :require => 'Dsc_xaddomain[tragiccode.local]',
     ) }
