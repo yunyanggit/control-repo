@@ -17,6 +17,7 @@ Vagrant.configure('2') do |config|
     end
 
     node.vm.provision "shell", inline: <<-SHELL
+          # disable firewall to allow access to enterprise console web ui
           sudo ufw disable
 
           # Setup puppet server to handle hiera-eyaml
@@ -27,6 +28,12 @@ Vagrant.configure('2') do |config|
 
           sudo puppet module install WhatsARanjit-node_manager --version 0.4.2
           sudo puppet apply /vagrant/PuppetMaster.pp --verbose
+          
+          # Automate first codemanager deploy
+          sudo echo 'puppetlabs' | puppet access login --username admin
+          puppet code deploy --all --wait
+
+
           sudo puppet agent --test
           sudo puppet agent --test
     SHELL
@@ -99,6 +106,7 @@ Vagrant.configure('2') do |config|
     node.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.linked_clone = true
+      v .customize ["modifyvm", :id, "--vram", 48]
     end
     node.vm.provision :hosts, :sync_hosts => true
     node.vm.provision "shell", :powershell_elevated_interactive => true, inline: <<-POWERSHELL
