@@ -52,7 +52,6 @@ class profile::activedirectory::domaincontroller(
 
   reboot { 'new_domain_controller_reboot':
     apply   => 'immediately',
-    when    => 'pending',
     message => 'New domain controller installed and is causing a reboot since one is pending',
     require => Dsc_xaddomain[$domain_name],
   }
