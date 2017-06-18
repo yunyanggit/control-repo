@@ -7,7 +7,7 @@ describe 'profile::activedirectory::groups' do
     it { should contain_class('profile::activedirectory::groups') }
 
     it { should contain_dsc_xadgroup('Domain Admins').with({
-        :dsc_ensure           => 'present',
+        :dsc_ensure           => 'present', 
         :dsc_groupname        => 'Domain Admins',
         :dsc_memberstoinclude => ['ad_principal_manager'],
         :dsc_category         => 'Security',
