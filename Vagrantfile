@@ -101,7 +101,7 @@ Vagrant.configure('2') do |config|
       v.linked_clone = true
     end
     node.vm.provision :hosts, :sync_hosts => true
-    node.vm.provision "shell", inline: <<-POWERSHELL
+    node.vm.provision "shell", :powershell_elevated_interactive => true, inline: <<-POWERSHELL
     [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};
     $webClient = New-Object System.Net.WebClient;
     $webClient.DownloadFile('https://puppetmaster.local:8140/packages/current/install.ps1', 'install.ps1');
