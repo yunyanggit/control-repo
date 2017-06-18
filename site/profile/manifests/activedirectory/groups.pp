@@ -13,5 +13,4 @@ class profile::activedirectory::groups(
     dsc_groupscope       => 'Global',
     dsc_description      => 'Managed by Puppet! Changes made manually may be lost.',
   }
-  
 }

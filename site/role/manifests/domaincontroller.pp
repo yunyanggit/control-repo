@@ -8,6 +8,6 @@ class role::domaincontroller {
   include profile::activedirectory::users
 
   Class['profile::activedirectory::domaincontroller']
-  -> Class['profile::activedirectory::groups']
   -> Class['profile::activedirectory::users']
+  -> Class['profile::activedirectory::groups']
 }
