@@ -11,7 +11,7 @@ class profile::activedirectory::users(
     dsc_username    => 'ad_principal_manager',
     dsc_password    => {
     'user'     => 'asdasdasd',
-    'password' => Sensitive('asda@#@$@123123asdas'),
+    'password' => "$(puppet node decrypt --env ${domain_administrator_password})",
   },
     dsc_description => 'Managed by Puppet! Changes made manually may be lost.',
   }

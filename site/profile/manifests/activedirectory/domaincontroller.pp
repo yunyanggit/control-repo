@@ -40,7 +40,7 @@ class profile::activedirectory::domaincontroller(
     # else it's needed to join a new domain to an existing forest
     dsc_domainadministratorcredential => {
       'user'     => $domain_administrator_user,
-      'password' => Sensitive($domain_administrator_password),
+      'password' => "$(puppet node decrypt --env ${domain_administrator_password})",
     },
     dsc_domainnetbiosname             => $domain_net_bios_name, # 15 character limit...
     dsc_databasepath                  => 'C:\\Windows\\NTDS',
