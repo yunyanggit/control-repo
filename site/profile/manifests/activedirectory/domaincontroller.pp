@@ -61,6 +61,8 @@ class profile::activedirectory::domaincontroller(
       dsc_validate       => true,
     }
   } else {
+    
+    # TODO: Install additional domaincontroller to our domain
 
     dsc_xdnsserveraddress { 'DnsServerAddresses':
       ensure             => 'present',
