@@ -36,8 +36,9 @@ class profile::activedirectory::domaincontroller(
       'user'     => 'this is ignored', # this is ignored...... its a PSCredential thing...
       'password' => $safe_mode_administrator_password,
     },
-    # Username & password to be assigned to our domain administrator account if this is our first domain in a forest.
-    # else it's needed to join a new domain to an existing forest
+    # NOTE:
+    # The domain credentials are not used/utilized if this is the first domain in a new forest.  These are only actually used
+    # when your creating a child domain and want to join the child domain to the parent domain.
     dsc_domainadministratorcredential => {
       'user'     => $domain_administrator_user,
       'password' => $domain_administrator_password,
