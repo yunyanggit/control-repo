@@ -12,7 +12,10 @@ describe 'profile::activedirectory::users' do
         :dsc_ensure      => 'present',
         :dsc_domainname  => 'tragiccode.local',
         :dsc_username    => 'ad_principal_manager',
-        # TODO: Put in credential
+        :dsc_password => {
+          'user'     => 'this is ignored',
+          'password' => 'Testing123!',
+        },
         :dsc_description => 'Managed by Puppet! Changes made manually may be lost.',
     }) }
 

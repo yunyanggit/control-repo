@@ -112,7 +112,7 @@ Vagrant.configure('2') do |config|
     node.vm.provision "shell", :powershell_elevated_interactive => true, inline: <<-POWERSHELL
     [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};
     $webClient = New-Object System.Net.WebClient;
-    $webClient.DownloadFile('https://puppetmaster.local:8140/packages/current/install.ps1', 'install.ps1');
+    $webClient.DownloadFile('https://puppetmaster-001.local:8140/packages/current/install.ps1', 'install.ps1');
     .\\install.ps1
     POWERSHELL
   end
