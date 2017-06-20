@@ -9,5 +9,6 @@ class role::domaincontroller {
 
   Class['profile::activedirectory::domaincontroller']
   -> Class['profile::activedirectory::users']
+  -> Class['profile::activedirectory::ous']
   -> Class['profile::activedirectory::groups']
 }
