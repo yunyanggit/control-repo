@@ -1,4 +1,4 @@
-class# Class: profile::activedirectory::organizationalunit
+# Class: profile::activedirectory::organizationalunits
 #
 #
 class profile::activedirectory::organizationalunits(
