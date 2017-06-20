@@ -29,6 +29,14 @@ describe 'profile::activedirectory::domaincontroller' do
         :dsc_domainname                    => 'tragiccode.local',
         :dsc_domainnetbiosname             => 'TRAGICCODE',
         # TODO: put in domain credential
+        :dsc_safemodeadministratorpassword => {
+            'user'     => 'this is ignored',
+            'password' => 'TestPassword123!',
+        },
+        :dsc_domainadministratorcredential => {
+            'user'     => 'bobdole',
+            'password' => 'TestPassword321@',
+        },
         # TODO: put in safe mode credential
         :dsc_databasepath                  => 'C:\\Windows\\NTDS',
         :dsc_logpath                       => 'C:\\Windows\\NTDS',
