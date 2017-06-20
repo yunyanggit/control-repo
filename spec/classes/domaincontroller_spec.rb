@@ -9,6 +9,7 @@ describe 'profile::activedirectory::domaincontroller' do
       :safe_mode_administrator_password => 'TestPassword123!',
       :domain_administrator_user        => 'bobdole',
       :domain_administrator_password    => 'TestPassword321@',
+      :is_first_dc                      => true,
     }}
     # Needed in order to get that 100% code coverage
     it { should contain_class('profile::activedirectory::domaincontroller') }

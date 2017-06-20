@@ -1,0 +1,2 @@
+---
+profile::activedirectory::domaincontroller::is_first_dc: true

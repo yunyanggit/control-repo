@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe 'profile::activedirectory::users' do
   context 'with default values for all parameters' do
-    
+    let(:params) {{
+      :domain_administrator_password => 'Testing123!',
+    }}
     # Needed in order to get that 100% code coverage
     it { should contain_class('profile::activedirectory::users') }
 
