@@ -2,7 +2,7 @@
 #
 #
 class profile::activedirectory::users(
-
+  String $domain_administrator_password,
 ) {
 
   dsc_xaduser { 'ad_principal_manager':
