@@ -15,6 +15,7 @@ class profile::activedirectory::domaincontroller(
   String $domain_administrator_user,
   String $domain_administrator_password,
   Boolean $is_first_dc,
+  Optional[Pattern[/^\d+\.\d+\.\d+\.\d+$/]] $first_dc_internal_ipv4_address = undef,
 ) {
 
   redact('safe_mode_administrator_password')
@@ -50,7 +51,25 @@ class profile::activedirectory::domaincontroller(
       dsc_sysvolpath                    => 'C:\\Windows\\SYSVOL',
       require                           => Dsc_windowsfeature['AD-Domain-Services'],
       notify                            => Reboot['new_domain_controller_reboot'],
-    } 
+    }
+
+    dsc_xdnsserveraddress { 'DnsServerAddresses':
+      ensure             => 'present',
+      dsc_address        => $facts['networking']['ip'],
+      dsc_interfacealias => $facts['networking']['primary'],
+      dsc_addressfamily  => 'IPv4',
+      dsc_validate       => true,
+    }
+  } else {
+
+    dsc_xdnsserveraddress { 'DnsServerAddresses':
+      ensure             => 'present',
+      dsc_address        => [ $facts['networking']['ip'], $first_dc_internal_ipv4_address ],
+      dsc_interfacealias => $facts['networking']['primary'],
+      dsc_addressfamily  => 'IPv4',
+      dsc_validate       => true,
+    }
+
   }
 
   reboot { 'new_domain_controller_reboot':

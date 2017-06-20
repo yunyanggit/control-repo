@@ -3,6 +3,11 @@ require 'spec_helper'
 describe 'profile::activedirectory::domaincontroller' do
   context 'with default values for all parameters' do
 
+    # https://github.com/puppetlabs/pltraining-bootstrap/blob/804c4c27e452d8272d48ef843e29eadd058e3ab8/spec/classes/guacamole_spec.rb
+    let(:facts) { {
+        :networking => { 'ip' => '10.0.2.15', 'primary' => 'Ethernet', },
+    } }
+
     let(:params) {{
       :domain_name                      => 'tragiccode.local',
       :domain_net_bios_name             => 'TRAGICCODE',
@@ -50,9 +55,21 @@ describe 'profile::activedirectory::domaincontroller' do
         :require => 'Dsc_xaddomain[tragiccode.local]',
     ) }
 
+    it { should contain_dsc_xdnsserveraddress('DnsServerAddresses').with({
+        :ensure             => 'present',
+        :dsc_address        => [ '10.0.2.15' ],
+        :dsc_interfacealias => 'Ethernet',
+        :dsc_addressfamily  => 'IPv4',
+        :dsc_validate       => true,
+    })}
+
   end
 
     context 'with is_first_dc => false' do
+    # https://github.com/puppetlabs/pltraining-bootstrap/blob/804c4c27e452d8272d48ef843e29eadd058e3ab8/spec/classes/guacamole_spec.rb
+    let(:facts) { {
+        :networking => { 'ip' => '10.0.2.15', 'primary' => 'Ethernet', },
+    } }
 
     let(:params) {{
       :domain_name                      => 'tragiccode.local',
@@ -61,6 +78,7 @@ describe 'profile::activedirectory::domaincontroller' do
       :domain_administrator_user        => 'bobdole',
       :domain_administrator_password    => 'TestPassword321@',
       :is_first_dc                      => false,
+      :first_dc_internal_ipv4_address   => '10.0.2.10'
     }}
     # Needed in order to get that 100% code coverage
     it { should contain_class('profile::activedirectory::domaincontroller') }
@@ -82,6 +100,14 @@ describe 'profile::activedirectory::domaincontroller' do
         :apply   => 'immediately',
         :require => 'Dsc_xaddomain[tragiccode.local]',
     ) }
+
+    it { should contain_dsc_xdnsserveraddress('DnsServerAddresses').with({
+        :ensure             => 'present',
+        :dsc_address        => [ '10.0.2.15', '10.0.2.10' ],
+        :dsc_interfacealias => 'Ethernet',
+        :dsc_addressfamily  => 'IPv4',
+        :dsc_validate       => true,
+    })}
 
   end
 end
