@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'profile::activedirectory::domaincontroller' do
   context 'with default values for all parameters' do
-    sensitive_value_redacted_message = '#<Sensitive [value redacted]'
+
     let(:params) {{
       :domain_name                      => 'tragiccode.local',
       :domain_net_bios_name             => 'TRAGICCODE',
@@ -27,12 +27,13 @@ describe 'profile::activedirectory::domaincontroller' do
         :ensure                            => 'present',
         :dsc_domainname                    => 'tragiccode.local',
         :dsc_domainnetbiosname             => 'TRAGICCODE',
+        # TODO: put in domain credential
+        # TODO: put in safe mode credential
         :dsc_databasepath                  => 'C:\\Windows\\NTDS',
         :dsc_logpath                       => 'C:\\Windows\\NTDS',
         :dsc_sysvolpath                    => 'C:\\Windows\\SYSVOL',
         :require                           => 'Dsc_windowsfeature[AD-Domain-Services]',
-    }).with_dsc_domainadministratorcredential(/#{Regexp.escape(sensitive_value_redacted_message)}/)
-      .with_dsc_safemodeadministratorpassword(/#{Regexp.escape(sensitive_value_redacted_message)}/) }
+    }) }
 
     it { should contain_reboot('new_domain_controller_reboot').with(
         :message => 'New domain controller installed and is causing a reboot since one is pending',
