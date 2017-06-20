@@ -1,7 +1,7 @@
-class# Class: profile::activedirectory::ous
+class# Class: profile::activedirectory::organizationalunit
 #
 #
-class profile::activedirectory::ous(
+class profile::activedirectory::organizationalunits(
 
 ) {
 
