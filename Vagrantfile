@@ -99,8 +99,8 @@ Vagrant.configure('2') do |config|
     end
   end
 
-  config.vm.define :domaincontroller do |node|
-    node.vm.hostname = 'domaincontroller-001'
+  config.vm.define 'dc-001' do |node|
+    node.vm.hostname = 'dc-001'
     node.vm.network :private_network, :ip => '10.20.1.7'
     node.vm.box = 'tragiccode/windows-2016-standard'
     node.vm.provider "virtualbox" do |v|
@@ -117,8 +117,8 @@ Vagrant.configure('2') do |config|
     POWERSHELL
   end
 
-    config.vm.define 'domaincontroller-002' do |node|
-    node.vm.hostname = 'domaincontroller-002'
+    config.vm.define 'dc-002' do |node|
+    node.vm.hostname = 'dc-002'
     node.vm.network :private_network, :ip => '10.20.1.8'
     node.vm.box = 'tragiccode/windows-2016-standard'
     node.vm.provider "virtualbox" do |v|
