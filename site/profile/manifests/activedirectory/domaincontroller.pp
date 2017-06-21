@@ -30,7 +30,14 @@ class profile::activedirectory::domaincontroller(
     dsc_ensure => 'present',
     dsc_name   => 'AD-Domain-Services',
   }
+
+  @@host { $facts['fqdn']:
+      #host_aliases =< [],
+      ip           => $facts['networking']['ip'],
+    }
+
   if ($is_first_dc) {
+
     dsc_xaddomain { $domain_name:
       ensure                            => 'present',
       dsc_domainname                    => $domain_name,
@@ -61,7 +68,7 @@ class profile::activedirectory::domaincontroller(
       dsc_validate       => true,
     }
   } else {
-    
+
     # TODO: Install additional domaincontroller to our domain
 
     dsc_xdnsserveraddress { 'DnsServerAddresses':
