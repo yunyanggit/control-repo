@@ -33,7 +33,6 @@ describe 'profile::activedirectory::domaincontroller' do
         :ensure                            => 'present',
         :dsc_domainname                    => 'tragiccode.local',
         :dsc_domainnetbiosname             => 'TRAGICCODE',
-        # TODO: put in domain credential
         :dsc_safemodeadministratorpassword => {
             'user'     => 'this is ignored',
             'password' => 'TestPassword123!',
@@ -42,12 +41,14 @@ describe 'profile::activedirectory::domaincontroller' do
             'user'     => 'bobdole',
             'password' => 'TestPassword321@',
         },
-        # TODO: put in safe mode credential
         :dsc_databasepath                  => 'C:\\Windows\\NTDS',
         :dsc_logpath                       => 'C:\\Windows\\NTDS',
         :dsc_sysvolpath                    => 'C:\\Windows\\SYSVOL',
         :require                           => 'Dsc_windowsfeature[AD-Domain-Services]',
+        :notify                            => 'Reboot[new_domain_controller_reboot]',
     }) }
+
+    it { should_not contain_dsc_xaddomaincontroller('Additional Domain Controller') }
 
     it { should contain_reboot('new_domain_controller_reboot').with(
         :message => 'New domain controller installed and is causing a reboot since one is pending',
@@ -94,6 +95,23 @@ describe 'profile::activedirectory::domaincontroller' do
     }) }
 
     it { should_not contain_dsc_xaddomain('tragiccode.local') }
+
+    it { should contain_dsc_xaddomaincontroller('Additional Domain Controller').with({
+        :dsc_domainname                    => 'tragiccode.local',
+        :dsc_safemodeadministratorpassword => {
+            'user'     => 'this is ignored',
+            'password' => 'TestPassword123!',
+        },
+        :dsc_domainadministratorcredential => {
+            'user'     => 'bobdole',
+            'password' => 'TestPassword321@',
+        },
+        :dsc_databasepath                  => 'C:\\Windows\\NTDS',
+        :dsc_logpath                       => 'C:\\Windows\\NTDS',
+        :dsc_sysvolpath                    => 'C:\\Windows\\SYSVOL',
+        :require                           => 'Dsc_windowsfeature[AD-Domain-Services]',
+        :notify                            => 'Reboot[new_domain_controller_reboot]',
+    }) }
 
     it { should contain_reboot('new_domain_controller_reboot').with(
         :message => 'New domain controller installed and is causing a reboot since one is pending',
