@@ -81,27 +81,27 @@ class profile::activedirectory::domaincontroller(
       dsc_validate       => true,
     }
 
-    dsc_xaddomaincontroller { 'Additional Domain Controller':
-      ensure                            => 'present',
-      dsc_domainname                    => $domain_name,
-      dsc_safemodeadministratorpassword => {
-        'user'     => 'this is ignored', # this is ignored...... its a PSCredential thing...
-        'password' => $safe_mode_administrator_password,
-      },
-      # NOTE:
-      # The domain credentials are not used/utilized if this is the first domain in a new forest.  These are only actually used
-      # when your creating a child domain and want to join the child domain to the parent domain.
-      dsc_domainadministratorcredential => {
-        'user'     => $domain_administrator_user,
-        'password' => $domain_administrator_password,
-      },
-      dsc_databasepath                  => 'C:\\Windows\\NTDS',
-      dsc_logpath                       => 'C:\\Windows\\NTDS',
-      dsc_sysvolpath                    => 'C:\\Windows\\SYSVOL',
-      # dsc_sitename                    => 'HOUSTON',
-      require                           => Dsc_windowsfeature['AD-Domain-Services'],
-      notify                            => Reboot['new_domain_controller_reboot'],
-    }
+    # dsc_xaddomaincontroller { 'Additional Domain Controller':
+    #   ensure                            => 'present',
+    #   dsc_domainname                    => $domain_name,
+    #   dsc_safemodeadministratorpassword => {
+    #     'user'     => 'this is ignored', # this is ignored...... its a PSCredential thing...
+    #     'password' => $safe_mode_administrator_password,
+    #   },
+    #   # NOTE:
+    #   # The domain credentials are not used/utilized if this is the first domain in a new forest.  These are only actually used
+    #   # when your creating a child domain and want to join the child domain to the parent domain.
+    #   dsc_domainadministratorcredential => {
+    #     'user'     => $domain_administrator_user,
+    #     'password' => $domain_administrator_password,
+    #   },
+    #   dsc_databasepath                  => 'C:\\Windows\\NTDS',
+    #   dsc_logpath                       => 'C:\\Windows\\NTDS',
+    #   dsc_sysvolpath                    => 'C:\\Windows\\SYSVOL',
+    #   # dsc_sitename                    => 'HOUSTON',
+    #   require                           => Dsc_windowsfeature['AD-Domain-Services'],
+    #   notify                            => Reboot['new_domain_controller_reboot'],
+    # }
 
   }
 
