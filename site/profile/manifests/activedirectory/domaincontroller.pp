@@ -31,13 +31,6 @@ class profile::activedirectory::domaincontroller(
     dsc_name   => 'AD-Domain-Services',
   }
 
-  # TODO Export a resource with the domain information so that other resources can figure out how to join the domain correctly.
-  # @@host { $facts['fqdn']:
-  #     #host_aliases =< [],
-  #     ip           => $facts['networking']['ip'],
-  # }
-  # Host <<| |>>
-
   if ($is_first_dc) {
 
     dsc_xaddomain { $domain_name:
@@ -109,4 +102,12 @@ class profile::activedirectory::domaincontroller(
     apply   => 'immediately',
     message => 'New domain controller installed and is causing a reboot since one is pending',
   }
+
+  # TODO Export a resource with the domain information so that other resources can figure out how to join the domain correctly.
+  # @@host { $facts['fqdn']:
+  #     #host_aliases =< [],
+  #     ip           => $facts['networking']['ip'],
+  # }
+  # Host <<| |>>
+
 }
