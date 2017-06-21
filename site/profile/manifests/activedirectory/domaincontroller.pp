@@ -31,11 +31,11 @@ class profile::activedirectory::domaincontroller(
     dsc_name   => 'AD-Domain-Services',
   }
 
-  @@host { $facts['fqdn']:
-      #host_aliases =< [],
-      ip           => $facts['networking']['ip'],
-  }
-  Host <<| |>>
+  # @@host { $facts['fqdn']:
+  #     #host_aliases =< [],
+  #     ip           => $facts['networking']['ip'],
+  # }
+  # Host <<| |>>
 
   if ($is_first_dc) {
 
