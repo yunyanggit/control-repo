@@ -35,11 +35,6 @@ class profile::activedirectory::domaincontroller(
       #host_aliases =< [],
       ip           => $facts['networking']['ip'],
   }
-
-  @@host { $facts['fqdn']:
-      #host_aliases =< [],
-      ip           => $facts['networking']['ip'],
-  }
   Host <<| |>>
 
   if ($is_first_dc) {
