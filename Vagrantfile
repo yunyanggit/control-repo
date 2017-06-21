@@ -116,4 +116,22 @@ Vagrant.configure('2') do |config|
     .\\install.ps1
     POWERSHELL
   end
+
+    config.vm.define 'domaincontroller-002' do |node|
+    node.vm.hostname = 'domaincontroller-002'
+    node.vm.network :private_network, :ip => '10.20.1.8'
+    node.vm.box = 'tragiccode/windows-2016-standard'
+    node.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.linked_clone = true
+      v .customize ["modifyvm", :id, "--vram", 48]
+    end
+    node.vm.provision :hosts, :sync_hosts => true
+    node.vm.provision "shell", :powershell_elevated_interactive => true, inline: <<-POWERSHELL
+    [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};
+    $webClient = New-Object System.Net.WebClient;
+    $webClient.DownloadFile('https://puppetmaster-001.local:8140/packages/current/install.ps1', 'install.ps1');
+    .\\install.ps1
+    POWERSHELL
+  end
 end
