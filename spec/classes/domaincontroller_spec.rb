@@ -115,12 +115,11 @@ describe 'profile::activedirectory::domaincontroller' do
     it { should contain_reboot('new_domain_controller_reboot').with(
         :message => 'New domain controller installed and is causing a reboot since one is pending',
         :apply   => 'immediately',
-        :require => 'Dsc_xaddomain[tragiccode.local]',
     ) }
 
     it { should contain_dsc_xdnsserveraddress('DnsServerAddresses').with({
         :ensure             => 'present',
-        :dsc_address        => [ '10.0.2.15', '10.0.2.10' ],
+        :dsc_address        => [ '10.0.2.10' ],
         :dsc_interfacealias => 'Ethernet',
         :dsc_addressfamily  => 'IPv4',
         :dsc_validate       => true,

@@ -68,10 +68,10 @@ class profile::activedirectory::domaincontroller(
 
     dsc_xdnsserveraddress { 'DnsServerAddresses':
       ensure             => 'present',
-      dsc_address        => [ $facts['networking']['ip'], $first_dc_internal_ipv4_address ],
+      dsc_address        => [ $first_dc_internal_ipv4_address ],
       dsc_interfacealias => $facts['networking']['primary'],
       dsc_addressfamily  => 'IPv4',
-      # dsc_validate       => true, Can't really validate here.  This is because the first ip isnt a valid dns server...yet! :D
+      dsc_validate       => true,
     }
 
     dsc_xaddomaincontroller { 'Additional Domain Controller':
