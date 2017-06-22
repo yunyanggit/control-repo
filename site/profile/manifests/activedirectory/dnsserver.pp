@@ -2,10 +2,18 @@
 #
 #
 class profile::activedirectory::dnsserver {
+    # Remove all 0's since these are the host portion of the ip
     $network = regsubst( $facts['networking']['network'], '(\.0)+$', '')
+    # Extract parts of the ip into an array
+    $matches = $network.match(/^(\d+)\.(\d+)\.(\d+)$/)
+    # reverse the array to match reverse lookup zone expected format
+    # turn array back into dotted notation
+    $st = reverse($matches.delete_at(0)).join(".")
+
+      
     dsc_xdnsserveradzone { 'Ipv4 Reverse Lookup Zone':
       dsc_ensure           => 'present',
-      dsc_name             => "${network}.in-addr.arpa",
+      dsc_name             => "${st}.in-addr.arpa",
       dsc_replicationscope => 'Forest',
       dsc_dynamicupdate    => 'None',
     }

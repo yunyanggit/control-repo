@@ -19,7 +19,7 @@ describe 'profile::activedirectory::dnsserver' do
 
     it { should contain_dsc_xdnsserveradzone('Ipv4 Reverse Lookup Zone').with({
         :dsc_ensure           => 'present',
-        :dsc_name             => '10.43.202.in-addr.arpa',
+        :dsc_name             => '202.43.10.in-addr.arpa',
         :dsc_replicationscope => 'Forest',
         :dsc_dynamicupdate    => 'None',
     }) }
