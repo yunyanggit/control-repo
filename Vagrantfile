@@ -134,4 +134,18 @@ Vagrant.configure('2') do |config|
     .\\install.ps1
     POWERSHELL
   end
+
+    config.vm.define 'jenkinsmaster-001' do |node|
+    node.vm.hostname = 'jenkinsmaster-001.local'
+    node.vm.network :private_network, :ip => '10.20.1.9'
+    # node.vm.network "forwarded_port", guest: 8000, host: 8000
+    node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
+    node.vm.provider "virtualbox" do |v|
+      v.linked_clone = true
+    end
+    node.vm.provision :hosts, :sync_hosts => true
+    node.vm.provision :pe_agent do |p|
+      p.master_vm = 'puppetmaster'
+    end
+  end
 end
