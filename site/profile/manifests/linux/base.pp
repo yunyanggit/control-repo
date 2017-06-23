@@ -13,4 +13,6 @@ class profile::linux::base(
     dsc_zone   => $domain_name,
   }
 
+  # TODO: implement reverse lookup record export
+
 }
