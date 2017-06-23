@@ -10,3 +10,5 @@ profile::activedirectory::domaincontroller::domain_net_bios_name: 'TRAGICCODE'
 profile::activedirectory::domaincontroller::domain_administrator_user: 'tragiccode\ad_principal_manager'
 profile::activedirectory::domaincontroller::is_first_dc: false
 profile::activedirectory::domaincontroller::first_dc_internal_ipv4_address: 10.20.1.7
+
+profile::linux::base: 'tragiccode.local'

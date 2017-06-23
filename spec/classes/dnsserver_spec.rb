@@ -31,6 +31,7 @@ describe 'profile::windows::activedirectory::dnsserver' do
         :dsc_dynamicupdate    => 'Secure',
     }) }
 
+
   end
 
 end

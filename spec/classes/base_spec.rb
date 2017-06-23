@@ -19,6 +19,7 @@ describe 'profile::base' do
     let(:facts) {{
         :kernel => 'Linux',
     }}
+
     it { should contain_class('profile::linux::base')}
   end
 end

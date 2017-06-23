@@ -24,7 +24,7 @@ class profile::windows::activedirectory::dnsserver {
       dsc_replicationscope => 'Forest',
       dsc_dynamicupdate    => 'Secure',
     }
-
+    # TODO: Find a way to write a unit test for this collector
     # Collect:
     Dsc_xdnsserveradzone <<| |>>
 }

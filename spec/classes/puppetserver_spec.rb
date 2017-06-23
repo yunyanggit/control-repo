@@ -6,6 +6,7 @@ describe 'profile::linux::puppetenterprise::puppetserver' do
     file_source_auto_sign_conf = 'puppet:///modules/profile/puppetenterprise/puppetserver/autosign.conf'
     let(:facts) {{
         :networking => { 'ip' => '10.0.2.15', },
+        :hostname   => 'g-x-00-wi-pup001',
     }}
     let(:params) {{
       :file_source_pe_license => file_source_pe_license,
@@ -21,5 +22,16 @@ describe 'profile::linux::puppetenterprise::puppetserver' do
         :source => file_source_auto_sign_conf,
         :notify => 'Service[pe-console-services]',
     }) }
+
+    describe 'exported_resources' do
+      subject { exported_resources }
+      it { should contain_dsc_xdnsrecord('puppet').with({
+        :dsc_ensure => 'present',
+        :dsc_name   => 'puppet',
+        :dsc_target => "g-x-00-wi-pup001.tragiccode.local",
+        :dsc_type   => 'CName',
+        :dsc_zone   => 'tragiccode.local',
+      }) }
+    end
   end
 end
