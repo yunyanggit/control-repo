@@ -5,7 +5,7 @@ class profile::linux::base(
     String $domain_name,
 ) {
 
-  dsc_xdnsrecord { 'ARecord':
+  @@dsc_xdnsrecord { 'ARecord':
     dsc_ensure => 'present',
     dsc_name   => $facts['hostname'],
     dsc_target => $facts['networking']['ip'],
