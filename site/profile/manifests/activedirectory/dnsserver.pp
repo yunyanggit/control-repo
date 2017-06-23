@@ -17,4 +17,11 @@ class profile::activedirectory::dnsserver {
       dsc_replicationscope => 'Forest',
       dsc_dynamicupdate    => 'None',
     }
+
+    dsc_xdnsserveradzone { 'Forward Lookup Zone':
+      dsc_ensure           => 'present',
+      dsc_name             => 'tragiccode.local',
+      dsc_replicationscope => 'Forest',
+      dsc_dynamicupdate    => 'Secure',
+    }
 }

@@ -24,6 +24,13 @@ describe 'profile::activedirectory::dnsserver' do
         :dsc_dynamicupdate    => 'None',
     }) }
 
+    it { should contain_dsc_xdnsserveradzone('Forward Lookup Zone').with({
+        :dsc_ensure           => 'present',
+        :dsc_name             => 'tragiccode.local',
+        :dsc_replicationscope => 'Forest',
+        :dsc_dynamicupdate    => 'Secure',
+    }) }
+
   end
 
 end
