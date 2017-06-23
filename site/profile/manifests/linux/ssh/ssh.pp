@@ -1,4 +1,4 @@
-class profile::ssh::ssh(
+class profile::linux::ssh::ssh(
 
 ) {
     # Prevent hacker from brute forcing accounts password

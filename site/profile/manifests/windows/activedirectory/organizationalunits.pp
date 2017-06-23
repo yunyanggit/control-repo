@@ -1,7 +1,7 @@
-# Class: profile::activedirectory::organizationalunits
+# Class: profile::windows::activedirectory::organizationalunits
 #
 #
-class profile::activedirectory::organizationalunits(
+class profile::windows::activedirectory::organizationalunits(
 
 ) {
 

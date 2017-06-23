@@ -1,7 +1,7 @@
-# Class: profile::activedirectory::groups
+# Class: profile::windows::activedirectory::groups
 #
 #
-class profile::activedirectory::groups(
+class profile::windows::activedirectory::groups(
 
 ) {
 

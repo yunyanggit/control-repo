@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'profile::activedirectory::dnsserver' do
+describe 'profile::windows::activedirectory::dnsserver' do
   context 'with default values for all parameters' do
     # https://github.com/puppetlabs/pltraining-bootstrap/blob/804c4c27e452d8272d48ef843e29eadd058e3ab8/spec/classes/guacamole_spec.rb
     let(:facts) {{
@@ -15,7 +15,7 @@ describe 'profile::activedirectory::dnsserver' do
     #   :is_first_dc                      => true,
     # }}
     # Needed in order to get that 100% code coverage
-    it { should contain_class('profile::activedirectory::dnsserver') }
+    it { should contain_class('profile::windows::activedirectory::dnsserver') }
 
     it { should contain_dsc_xdnsserveradzone('Ipv4 Reverse Lookup Zone').with({
         :dsc_ensure           => 'present',

@@ -8,7 +8,7 @@
 # @param domain_administrator_user [String] The user for the domain administrator account for the domain.
 # @param domain_administrator_password [String] The password for the domain administrator account for the domain.
 #
-class profile::activedirectory::domaincontroller(
+class profile::windows::activedirectory::domaincontroller(
   Pattern[/\./] $domain_name,
   String[1, 15] $domain_net_bios_name,
   String $safe_mode_administrator_password,

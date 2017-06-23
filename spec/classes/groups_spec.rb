@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe 'profile::activedirectory::groups' do
+describe 'profile::windows::activedirectory::groups' do
   context 'with default values for all parameters' do
     
     # Needed in order to get that 100% code coverage
-    it { should contain_class('profile::activedirectory::groups') }
+    it { should contain_class('profile::windows::activedirectory::groups') }
 
     it { should contain_dsc_xadgroup('Domain Admins').with({
         :dsc_ensure           => 'present', 

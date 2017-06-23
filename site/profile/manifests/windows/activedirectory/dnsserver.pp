@@ -1,7 +1,7 @@
-# Class: profile::activedirectory::dnsserver
+# Class: profile::windows::activedirectory::dnsserver
 #
 #
-class profile::activedirectory::dnsserver {
+class profile::windows::activedirectory::dnsserver {
     # Remove all 0's since these are the host portion of the ip
     $network = regsubst( $facts['networking']['network'], '(\.0)+$', '')
     # Extract parts of the ip into an array
@@ -24,4 +24,7 @@ class profile::activedirectory::dnsserver {
       dsc_replicationscope => 'Forest',
       dsc_dynamicupdate    => 'Secure',
     }
+
+    # Collect:
+    Dsc_xdnsserveradzone <<| |>>
 }

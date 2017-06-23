@@ -1,4 +1,4 @@
-class profile::cleanup::cleanup(
+class profile::windows::cleanup::cleanup(
 
 ) {
 

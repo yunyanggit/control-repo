@@ -1,7 +1,7 @@
-# Class: profile::activedirectory::users
+# Class: profile::windows::activedirectory::users
 #
 #
-class profile::activedirectory::users(
+class profile::windows::activedirectory::users(
   String $domain_administrator_password,
 ) {
 

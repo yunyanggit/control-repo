@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'profile::activedirectory::domaincontroller' do
+describe 'profile::windows::activedirectory::domaincontroller' do
   context 'with default values for all parameters' do
 
     # https://github.com/puppetlabs/pltraining-bootstrap/blob/804c4c27e452d8272d48ef843e29eadd058e3ab8/spec/classes/guacamole_spec.rb
@@ -17,7 +17,7 @@ describe 'profile::activedirectory::domaincontroller' do
       :is_first_dc                      => true,
     }}
     # Needed in order to get that 100% code coverage
-    it { should contain_class('profile::activedirectory::domaincontroller') }
+    it { should contain_class('profile::windows::activedirectory::domaincontroller') }
 
     it { should contain_dsc_windowsfeature('RSAT-ADDS').with({
         :dsc_ensure => 'present',
@@ -81,7 +81,7 @@ describe 'profile::activedirectory::domaincontroller' do
       :first_dc_internal_ipv4_address   => '10.0.2.10'
     }}
     # Needed in order to get that 100% code coverage
-    it { should contain_class('profile::activedirectory::domaincontroller') }
+    it { should contain_class('profile::windows::activedirectory::domaincontroller') }
 
     it { should contain_dsc_windowsfeature('RSAT-ADDS').with({
         :dsc_ensure => 'present',

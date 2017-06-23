@@ -1,4 +1,4 @@
-class profile::hardening::hardening(
+class profile::windows::hardening::hardening(
 
 ) {
   # Causes computers to be autodiscovered and show up in "My network places"

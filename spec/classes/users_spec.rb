@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe 'profile::activedirectory::users' do
+describe 'profile::windows::activedirectory::users' do
   context 'with default values for all parameters' do
     let(:params) {{
       :domain_administrator_password => 'Testing123!',
     }}
     # Needed in order to get that 100% code coverage
-    it { should contain_class('profile::activedirectory::users') }
+    it { should contain_class('profile::windows::activedirectory::users') }
 
     it { should contain_dsc_xaduser('ad_principal_manager').with({
         :dsc_ensure      => 'present',
