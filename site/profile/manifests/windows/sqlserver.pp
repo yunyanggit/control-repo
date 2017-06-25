@@ -19,8 +19,8 @@ class profile::windows::sqlserver {
     # dsc_productkey => 'xxx-xxx-xxx-xxx'
     dsc_updateenabled       => 'true',
     #dsc_updatesource       => 'C:\\'
-    dsc_sqmreporting        => true,
-    dsc_errorreporting      => true,
+    dsc_sqmreporting        => 'true',
+    dsc_errorreporting      => 'true',
     # dsc_installshareddir  => 'C:\\',
     # dsc_installsharedwowdir => 'C:\\',
     # dsc_InstanceDir => 'C:\\Program Files\\Microsoft SQL Server',
