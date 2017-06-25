@@ -74,6 +74,16 @@ class profile::windows::activedirectory::domaincontroller(
       dsc_validate       => true,
     }
 
+    # TODO: Should we have code to wait for the domain to exist before adding an additional domain controller?
+    # xWaitForADDomain DscForestWait
+    # {
+    #     DomainName = $Node.DomainName
+    #     DomainUserCredential = $domainCred
+    #     RetryCount = $Node.RetryCount
+    #     RetryIntervalSec = $Node.RetryIntervalSec
+    #     DependsOn = "[WindowsFeature]ADDSInstall"
+    # }
+
     dsc_xaddomaincontroller { 'Additional Domain Controller':
       ensure                            => 'present',
       dsc_domainname                    => $domain_name,
