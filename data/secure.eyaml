@@ -1,5 +1,5 @@
 ---
-profile::activedirectory::domaincontroller::safe_mode_administrator_password: >
+profile::windows::activedirectory::domaincontroller::safe_mode_administrator_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
     DQYJKoZIhvcNAQEBBQAEggEACX0Dy5+URA/3eFZnUSXCMZyXnMboYBGjrrCu
     a9gfJWV3/nlqF9BnfAsVqAQJm5F/tA3f9pGAXeuILWuoFDBrhvryd7XL5uBM
@@ -9,7 +9,7 @@ profile::activedirectory::domaincontroller::safe_mode_administrator_password: >
     NEK5GQhxTq+xCd/YbkO6iq7rGHdvqreuQiGi7LuNazK+0Tb60m2kWPEsrqYd
     itCPOjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCpfgmXB3TVaODWjINN
     hNSKgBCFAmGC+3esTB8fxO1AVAxi]
-profile::activedirectory::domaincontroller::domain_administrator_password: >
+profile::windows::activedirectory::domaincontroller::domain_administrator_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
     DQYJKoZIhvcNAQEBBQAEggEACX0Dy5+URA/3eFZnUSXCMZyXnMboYBGjrrCu
     a9gfJWV3/nlqF9BnfAsVqAQJm5F/tA3f9pGAXeuILWuoFDBrhvryd7XL5uBM
@@ -19,7 +19,7 @@ profile::activedirectory::domaincontroller::domain_administrator_password: >
     NEK5GQhxTq+xCd/YbkO6iq7rGHdvqreuQiGi7LuNazK+0Tb60m2kWPEsrqYd
     itCPOjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCpfgmXB3TVaODWjINN
     hNSKgBCFAmGC+3esTB8fxO1AVAxi]
-profile::activedirectory::users::domain_administrator_password: >
+profile::windows::activedirectory::users::domain_administrator_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
     DQYJKoZIhvcNAQEBBQAEggEACX0Dy5+URA/3eFZnUSXCMZyXnMboYBGjrrCu
     a9gfJWV3/nlqF9BnfAsVqAQJm5F/tA3f9pGAXeuILWuoFDBrhvryd7XL5uBM
