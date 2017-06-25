@@ -19,6 +19,11 @@ class profile::windows::base {
   # start necessary services
   # start antivirus if installed
 
+  class { 'chocolatey':
+    version    => '0.10.6.1',
+    log_output => true,
+  }
+
   dsc_xtimezone { 'Server Timezone':
     ensure               => 'present',
     dsc_issingleinstance => 'yes',
