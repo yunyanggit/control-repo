@@ -11,7 +11,7 @@ class profile::windows::sqlserver {
 
   dsc_xwaitforvolume { 'Wait for mounted SQL Server ISO':
     dsc_driveletter => 'D',
-    require         => dsc_xmountimage['SQL Server ISO'],
+    require         => Dsc_xmountimage['SQL Server ISO'],
   }
 
   dsc_xsqlserversetup { 'Install SQL Server':
