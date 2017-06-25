@@ -6,7 +6,8 @@ class profile::windows::sqlserver {
     ensure                  => 'present',
     dsc_action              => 'Install',
     dsc_instancename        => 'MSSQLSERVER',
-    dsc_sourcepath          => 'E:\\' # supposed to be UNC i think..
+    # dsc_sourcepath        => 'E:\\' # supposed to be UNC i think..
+    dsc_sourcepath          => 'C:\\users\\vagrant\\desktop\\sql',
     #dsc_sourcecredential    => => {
     #     'user'     => $domain_administrator_user,
     #     'password' => $domain_administrator_password,
