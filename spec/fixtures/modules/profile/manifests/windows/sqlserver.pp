@@ -46,7 +46,7 @@ class profile::windows::sqlserver {
     # },
     # dsc_sqlcollation => '',
     dsc_sqlsysadminaccounts => ['vagrant'],
-    dsc_securitymode        => 'Windows', # 'SQL' aka mixed
+    # dsc_securitymode        => 'SQL', # 'SQL' aka mixed.  Don't specify for windows only
     # dsc_sapwd             => 'XXXX' # only applicable if mixed security mode
     # dsc_installsqldatadir => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
     # dsc_sdluserdbdir      => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
