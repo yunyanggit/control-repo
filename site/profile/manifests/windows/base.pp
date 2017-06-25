@@ -18,4 +18,10 @@ class profile::windows::base {
 
   # start necessary services
   # start antivirus if installed
+
+  dsc_xtimezone { 'Server Timezone':
+    ensure               => 'present',
+    dsc_issingleinstance => 'yes',
+    dsc_timezone         => 'UTC',
+  }
 }
