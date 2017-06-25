@@ -32,7 +32,7 @@ class profile::windows::sqlserver {
     #     'password' => $domain_administrator_password,
     # },
     # dsc_sqlcollation => '',
-    dsc_sqlsysadminaccounts => ['tragiccode\\sql_server_admin'],
+    dsc_sqlsysadminaccounts => ['vagrant'],
     dsc_securitymode        => 'Windows', # 'SQL' aka mixed
     # dsc_sapwd             => 'XXXX' # only applicable if mixed security mode
     # dsc_installsqldatadir => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
