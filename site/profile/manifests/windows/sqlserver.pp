@@ -41,9 +41,9 @@ class profile::windows::sqlserver {
     # dsc_sqluserdblogdir   => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
     # dsc_sqltempdbdir      => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
     dsc_sqltempdblogdir     => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
-    # dsc_setupcredential     => {
-    #     'user'     => $domain_administrator_user,
-    #     'password' => $domain_administrator_password,
-    # },
+    dsc_setupcredential     => {
+        'user'     => 'vagrant',
+        'password' => 'vagrant',
+    },
   }
 }
