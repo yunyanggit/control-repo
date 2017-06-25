@@ -3,19 +3,46 @@
 #
 class profile::windows::sqlserver {
   dsc_xsqlserversetup { 'Install SQL Server':
-    ensure => 'present',
-  # Features = $Configuration.InstallSQL.Features
-  # InstanceName = $Configuration.InstallSQL.InstanceName
-  # SQLCollation = $Configuration.InstallSQL.SQLCollation
-  # SQLSysAdminAccounts = $Configuration.InstallSQL.SQLSysAdminAccounts
-  # InstallSQLDataDir = $Configuration.InstallSQL.InstallSQLDataDir
-  # SQLUserDBDir = $Configuration.InstallSQL.SQLUserDBDir
-  # SQLUserDBLogDir = $Configuration.InstallSQL.SQLUserDBLogDir
-  # SQLTempDBDir = $Configuration.InstallSQL.SQLTempDBDir
-  # SQLTempDBLogDir = $Configuration.InstallSQL.SQLTempDBLogDir
-  # SQLBackupDir = $Configuration.InstallSQL.SQLBackupDir
-
-  # SourcePath = $Configuration.InstallSQL.SourcePath
-  # SetupCredential = $Node.InstallerServiceAccount
+    ensure                  => 'present',
+    dsc_action              => 'Install',
+    dsc_instancename        => 'MSSQLSERVER',
+    dsc_sourcepath          => 'E:\\' # supposed to be UNC i think..
+    #dsc_sourcecredential    => => {
+    #     'user'     => $domain_administrator_user,
+    #     'password' => $domain_administrator_password,
+    # },
+    dsc_suppressreboot      => false,
+    dsc_forcereboot         => true,
+    dsc_features            => 'SQLENGINE',
+    # dsc_instanceid  => 'MSSQLSERVER',
+    # dsc_productkey => 'xxx-xxx-xxx-xxx'
+    dsc_updateenabled       => true,
+    #dsc_updatesource       => 'C:\\'
+    dsc_sqmreporting        => true,
+    dsc_errorreporting      => true,
+    # dsc_installshareddir  => 'C:\\',
+    # dsc_installsharedwowdir => 'C:\\',
+    # dsc_InstanceDir => 'C:\\Program Files\\Microsoft SQL Server',
+    # dsc_sqlsvcaccount   => {
+    #     'user'     => $domain_administrator_user,
+    #     'password' => $domain_administrator_password,
+    # },
+    # dsc_agtsvcaccount   => {
+    #     'user'     => $domain_administrator_user,
+    #     'password' => $domain_administrator_password,
+    # },
+    # dsc_sqlcollation => '',
+    dsc_sqlsysadminaccounts => ['tragiccode\\sql_server_admin'],
+    dsc_securitymode        => 'Windows', # 'SQL' aka mixed
+    # dsc_sapwd             => 'XXXX' # only applicable if mixed security mode
+    # dsc_installsqldatadir => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
+    # dsc_sdluserdbdir      => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
+    # dsc_sqluserdblogdir   => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
+    # dsc_sqltempdbdir      => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
+    dsc_sqltempdblogdir     => 'C:\\Program Files\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\Data',
+    # dsc_setupcredential     => {
+    #     'user'     => $domain_administrator_user,
+    #     'password' => $domain_administrator_password,
+    # },
   }
 }
