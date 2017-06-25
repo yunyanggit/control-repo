@@ -81,7 +81,7 @@ class profile::windows::sqlserver {
     # dsc_failoverclustergroupname => 'SQL Server (MSSQLSERVER)',
     # dsc_failoverclusteripaddress => ['10.0.0.2', '10.0.0.3'],
     # dsc_failoverclusternetworkname => 'blah',
-    dsc_setupprocesstimeout => 7200, # 2 hours
+   # dsc_setupprocesstimeout => 7200, # 2 hours
     dsc_setupcredential     => {
         'user'     => 'vagrant',
         'password' => 'vagrant',
