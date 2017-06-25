@@ -88,8 +88,8 @@ class profile::windows::sqlserver {
     },
   }
 
-  package { 'sql-server-management-studio':
-    ensure   => '14.0.17119.0',
-    provider => 'chocolatey',
-  }
+  # package { 'sql-server-management-studio':
+  #   ensure   => '14.0.17119.0',
+  #   provider => 'chocolatey',
+  # }
 }
