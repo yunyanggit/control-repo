@@ -26,7 +26,7 @@ class profile::windows::sqlserver {
     # },
     dsc_suppressreboot      => false,
     dsc_forcereboot         => true,
-    dsc_features            => 'SQLENGINE',
+    dsc_features            => 'SQLENGINE,ADV_SSMS',
     # dsc_instanceid        => 'MSSQLSERVER',
     # dsc_productkey        => 'xxx-xxx-xxx-xxx'
     dsc_updateenabled       => 'true',
