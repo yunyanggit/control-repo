@@ -1,2 +1,2 @@
 ---
-profile::activedirectory::domaincontroller::is_first_dc: true
+profile::windows::activedirectory::domaincontroller::is_first_dc: true

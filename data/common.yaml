@@ -5,10 +5,10 @@ puppet_enterprise::master::code_manager::post_environment_hooks:
 
 pe_puppetdb::pe::listen_address: 0.0.0.0
 
-profile::activedirectory::domaincontroller::domain_name: 'tragiccode.local'
-profile::activedirectory::domaincontroller::domain_net_bios_name: 'TRAGICCODE'
-profile::activedirectory::domaincontroller::domain_administrator_user: 'tragiccode\ad_principal_manager'
-profile::activedirectory::domaincontroller::is_first_dc: false
-profile::activedirectory::domaincontroller::first_dc_internal_ipv4_address: 10.20.1.7
+profile::windows::activedirectory::domaincontroller::domain_name: 'tragiccode.local'
+profile::windows::activedirectory::domaincontroller::domain_net_bios_name: 'TRAGICCODE'
+profile::windows::activedirectory::domaincontroller::domain_administrator_user: 'tragiccode\ad_principal_manager'
+profile::windows::activedirectory::domaincontroller::is_first_dc: false
+profile::windows::activedirectory::domaincontroller::first_dc_internal_ipv4_address: 10.20.1.7
 
 profile::linux::base: 'tragiccode.local'
