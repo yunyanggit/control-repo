@@ -17,7 +17,7 @@ class profile::windows::sqlserver {
     dsc_features            => 'SQLENGINE',
     # dsc_instanceid  => 'MSSQLSERVER',
     # dsc_productkey => 'xxx-xxx-xxx-xxx'
-    dsc_updateenabled       => true,
+    dsc_updateenabled       => 'true',
     #dsc_updatesource       => 'C:\\'
     dsc_sqmreporting        => true,
     dsc_errorreporting      => true,
