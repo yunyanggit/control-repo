@@ -136,8 +136,8 @@ Vagrant.configure('2') do |config|
   end
 
   
-  config.vm.define 'sql-002' do |node|
-    node.vm.hostname = 'sql-002'
+  config.vm.define 'sql-001' do |node|
+    node.vm.hostname = 'sql-001'
     node.vm.network :private_network, :ip => '10.20.1.9'
     node.vm.box = 'tragiccode/windows-2016-standard'
     node.vm.provider "virtualbox" do |v|
