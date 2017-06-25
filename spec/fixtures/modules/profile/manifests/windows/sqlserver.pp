@@ -4,12 +4,12 @@
 class profile::windows::sqlserver {
 
   dsc_xmountimage { 'SQL Server ISO':
-    dsc_ensure      => 'Present'
+    dsc_ensure      => 'Present',
     dsc_imagepath   => 'C:\\users\\vagrant\\desktop\\sql\\en_sql_server_2016_developer_with_service_pack_1_x64_dvd_9548071.iso',
     dsc_driveletter => 'D',
   }
 
-  dsc_xwaitforvolume { 'SQL Server ISO':
+  dsc_xwaitforvolume { 'Wait for mounted SQL Server ISO':
     dsc_driveletter => 'D',
     require         => dsc_xmountimage['SQL Server ISO'],
   }
