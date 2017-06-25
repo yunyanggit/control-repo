@@ -109,7 +109,7 @@ Vagrant.configure('2') do |config|
       v .customize ["modifyvm", :id, "--vram", 48]
     end
     node.vm.provision :hosts, :sync_hosts => true
-    node.vm.provision "shell", :powershell_elevated_interactive => true, inline: <<-POWERSHELL
+    node.vm.provision "shell", inline: <<-POWERSHELL
     [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};
     $webClient = New-Object System.Net.WebClient;
     $webClient.DownloadFile('https://puppetmaster-001.local:8140/packages/current/install.ps1', 'install.ps1');
@@ -127,7 +127,7 @@ Vagrant.configure('2') do |config|
       v .customize ["modifyvm", :id, "--vram", 48]
     end
     node.vm.provision :hosts, :sync_hosts => true
-    node.vm.provision "shell", :powershell_elevated_interactive => true, inline: <<-POWERSHELL
+    node.vm.provision "shell", inline: <<-POWERSHELL
     [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};
     $webClient = New-Object System.Net.WebClient;
     $webClient.DownloadFile('https://puppetmaster-001.local:8140/packages/current/install.ps1', 'install.ps1');
