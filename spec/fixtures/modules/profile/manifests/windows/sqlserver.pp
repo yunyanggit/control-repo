@@ -3,23 +3,23 @@
 #
 class profile::windows::sqlserver {
 
-  # xMountImage SQLServerISO {
-  #         ImagePath = $Node.ISOPath
-  #         DriveLetter = $Node.ISODriveLetter
-  #         Ensure = "Present"
-  # }
+  dsc_xmountimage { 'SQL Server ISO':
+    dsc_ensure      => 'Present'
+    dsc_imagepath   => 'C:\\users\\vagrant\\desktop\\sql\\en_sql_server_2016_developer_with_service_pack_1_x64_dvd_9548071.iso',
+    dsc_driveletter => 'D',
+  }
 
-  # xWaitForVolume ISOVolume {
-  #     DriveLetter = $Node.ISODriveLetter
-  #     DependsOn = "[xMountImage]SQLServerISO"
-  # }
+  dsc_xwaitforvolume { 'SQL Server ISO':
+    dsc_driveletter => 'D',
+    require         => dsc_xmountimage['SQL Server ISO'],
+  }
 
   dsc_xsqlserversetup { 'Install SQL Server':
     ensure                  => 'present',
     dsc_action              => 'Install',
     dsc_instancename        => 'MSSQLSERVER',
     # dsc_sourcepath        => 'E:\\' # supposed to be UNC i think..
-    dsc_sourcepath          => 'C:\\users\\vagrant\\desktop\\sql\\en_sql_server_2016_developer_with_service_pack_1_x64_dvd_9548071.iso\\',
+    dsc_sourcepath          => 'D:\\',
     #dsc_sourcecredential   => {
     #     'user'     => $domain_administrator_user,
     #     'password' => $domain_administrator_password,
