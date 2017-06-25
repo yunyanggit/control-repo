@@ -20,8 +20,8 @@ class profile::windows::base {
   # start antivirus if installed
 
   class { 'chocolatey':
-    version    => '0.10.6.1',
-    log_output => true,
+    chocolatey_version => '0.10.6.1',
+    log_output         => true,
   }
 
   dsc_xtimezone { 'Server Timezone':
