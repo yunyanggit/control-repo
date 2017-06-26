@@ -6,6 +6,9 @@ class profile::linux::jenkinsmaster {
   class { 'jenkins':
     version => 'latest',
     lts     => true,
+    config_hash  => {
+            'JENKINS_JAVA_OPTIONS' => {value => '-Djenkins.install.runSetupWizard=false'},
+        },
     user_hash => {
     'admin' => {
       'password' => 'puppetlabs',
