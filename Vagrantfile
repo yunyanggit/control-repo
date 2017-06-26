@@ -154,9 +154,27 @@ Vagrant.configure('2') do |config|
     POWERSHELL
   end
 
+  config.vm.define 'proget-001' do |node|
+    node.vm.hostname = 'proget-001'
+    node.vm.network :private_network, :ip => '10.20.1.10'
+    node.vm.box = 'tragiccode/windows-2016-standard'
+    node.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.linked_clone = true
+      v .customize ["modifyvm", :id, "--vram", 48]
+    end
+    node.vm.provision :hosts, :sync_hosts => true
+    node.vm.provision "shell", inline: <<-POWERSHELL
+    [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true};
+    $webClient = New-Object System.Net.WebClient;
+    $webClient.DownloadFile('https://puppetmaster-001.local:8140/packages/current/install.ps1', 'install.ps1');
+    .\\install.ps1
+    POWERSHELL
+  end
+
     config.vm.define 'jenkinsmaster-001' do |node|
     node.vm.hostname = 'jenkinsmaster-001.local'
-    node.vm.network :private_network, :ip => '10.20.1.10'
+    node.vm.network :private_network, :ip => '10.20.1.11'
     # node.vm.network "forwarded_port", guest: 8000, host: 8000
     node.vm.box = 'puppetlabs/ubuntu-16.04-64-nocm'
     node.vm.provider "virtualbox" do |v|
