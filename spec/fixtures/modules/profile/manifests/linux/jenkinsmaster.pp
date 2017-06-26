@@ -2,6 +2,13 @@
 #
 #
 class profile::linux::jenkinsmaster {
+
+  
+  class { 'jenkins':
+    version            => 'latest',
+    lts                => true,
+  }
+
   file { ['/var/lib/jenkins', '/var/lib/jenkins/secrets', '/var/lib/jenkins/init.groovy.d']:
     ensure => directory,
     owner   => 'jenkins',
@@ -51,12 +58,6 @@ class profile::linux::jenkinsmaster {
     owner   => 'jenkins',
     group   => 'jenkins',
     mode    => '0755',
-  }
-
-
-  class { 'jenkins':
-    version            => 'latest',
-    lts                => true,
   }
 
   jenkins::plugin { 'structs': }
