@@ -11,6 +11,7 @@ class profile::linux::jenkinsmaster {
       'password' => 'puppetlabs',
       'email'    => 'michael@tragiccode.com'
     }
+   }
   }
 
   jenkins::plugin { 'structs': }
