@@ -26,7 +26,9 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'display-url-api': }
   jenkins::plugin { 'ace-editor': }
   jenkins::plugin { 'pipeline-input-step': }
-  jenkins::plugin { 'workflow-job': }
+  jenkins::plugin { 'workflow-job':
+    version => '2.12.1',
+  }
   jenkins::plugin { 'workflow-cps-global-lib': }
   jenkins::plugin { 'workflow-multibranch': }
   jenkins::plugin { 'pipeline-stage-view': }
