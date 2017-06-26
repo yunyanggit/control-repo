@@ -9,6 +9,7 @@ class profile::linux::jenkinsmaster {
     password => 'changeme',
   }
   jenkins::plugin { 'structs': }
+  jenkins::plugin { 'puppet-enterprise-pipeline': }
   # jenkins::plugin { 'workflow-aggregator': }
   # jenkins::plugin { 'git': }
   # jenkins::plugin { 'workflow-scm-step': }
@@ -16,7 +17,7 @@ class profile::linux::jenkinsmaster {
   # jenkins::plugin { 'workflow-support': }
   # jenkins::plugin { 'workflow-cps': }
   # jenkins::plugin { 'workflow-durable-task-step': }
-  # jenkins::plugin { 'workflow-api': }
+  # jenkins::plugin { 'workflow-api': } 
   # jenkins::plugin { 'workflow-basic-steps': }
   # jenkins::plugin { 'ace-editor': }
   # jenkins::plugin { 'bouncycastle-api': }
