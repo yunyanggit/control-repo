@@ -21,5 +21,12 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'mailer': }
   jenkins::plugin { 'display-url-api': }
   jenkins::plugin { 'ace-editor': }
-  jenkins::plugin { 'pipeline': }
+  jenkins::plugin { 'pipeline-input-step': }
+  jenkins::plugin { 'workflow-job': }
+  jenkins::plugin { 'workflow-cps-global-lib': }
+  jenkins::plugin { 'workflow-multibranch': }
+  jenkins::plugin { 'pipeline-stage-view': }
+  jenkins::plugin { 'pipeline-model-definition': }
+  jenkins::plugin { 'pipeline-stage-step': }
+  jenkins::plugin { 'pipeline-milestone-step': }
 }
