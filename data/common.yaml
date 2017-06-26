@@ -13,4 +13,4 @@ profile::windows::activedirectory::domaincontroller::domain_administrator_user: 
 profile::windows::activedirectory::domaincontroller::is_first_dc: false
 profile::windows::activedirectory::domaincontroller::first_dc_internal_ipv4_address: 10.20.1.7
 
-profile::linux::base: 'tragiccode.local'
+profile::linux::base::domain_name: 'tragiccode.local'
