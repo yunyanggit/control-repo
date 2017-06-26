@@ -7,7 +7,7 @@ class profile::linux::jenkinsmaster {
 class { 'jenkins':
   config_hash => {
     'JAVA_ARGS' => { value => '-Xmx1000m -Dhudson.DNSMultiCast.disabled=true -Djava.awt.headless=true -Djenkins.install.runSetupWizard=false -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=30' },
-    'JENKINS_ARGS' => { value => '--webroot=/var/cache/jenkins/war --httpPort=$HTTP_PORT --httpListenAddress=127.0.0.1 --prefix=$PREFIX' },
+    # 'JENKINS_ARGS' => { value => '--webroot=/var/cache/jenkins/war --httpPort=$HTTP_PORT --httpListenAddress=127.0.0.1 --prefix=$PREFIX' },
   },
   lts => true,
 }
