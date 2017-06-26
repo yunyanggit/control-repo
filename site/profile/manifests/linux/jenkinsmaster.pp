@@ -6,6 +6,11 @@ class profile::linux::jenkinsmaster {
   class { 'jenkins':
     version => 'latest',
     lts     => true,
+    user_hash => {
+    'admin' => {
+      'password' => 'puppetlabs',
+      'email'    => 'michael@tragiccode.com'
+    }
   }
 
   jenkins::plugin { 'structs': }
@@ -51,8 +56,8 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'ssh-agent': }
   # Dependencies
   jenkins::plugin { 'bouncycastle-api': }
-  jenkins::user { 'tragiccode':
-    email    => 'michael@tragiccode.com',
-    password => 'puppetlabs',
-  }
+  # jenkins::user { 'tragiccode':
+  #   email    => 'michael@tragiccode.com',
+  #   password => 'puppetlabs',
+  # }
 }
