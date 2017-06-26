@@ -4,13 +4,12 @@
 class profile::linux::jenkinsmaster {
 
   
-class { 'jenkins':
-  config_hash => {
-    'JAVA_ARGS' => { value => '-Xmx1000m -Dhudson.DNSMultiCast.disabled=true -Djava.awt.headless=true -Djenkins.install.runSetupWizard=false -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=30' },
-    # 'JENKINS_ARGS' => { value => '--webroot=/var/cache/jenkins/war --httpPort=$HTTP_PORT --httpListenAddress=127.0.0.1 --prefix=$PREFIX' },
-  },
-  lts => true,
-}
+  class { 'jenkins':
+    version            => 'latest',
+    lts              => true,
+  }
+
+
   jenkins::plugin { 'structs': }
   jenkins::plugin { 'puppet-enterprise-pipeline': }
   jenkins::plugin { 'workflow-api': }
@@ -18,7 +17,7 @@ class { 'jenkins':
   jenkins::plugin { 'workflow-basic-steps': }
   jenkins::plugin { 'workflow-cps': }
   jenkins::plugin { 'workflow-durable-task-step': }
-  # jenkins::plugin { 'plain-credentials': }
+  jenkins::plugin { 'plain-credentials': }
   jenkins::plugin { 'script-security': }
   jenkins::plugin { 'scm-api': }
   jenkins::plugin { 'workflow-support': }
@@ -54,8 +53,8 @@ class { 'jenkins':
   jenkins::plugin { 'ssh-agent': }
   # Dependencies
   jenkins::plugin { 'bouncycastle-api': }
-  # jenkins::user { 'tragiccode':
-  #   email    => 'michael@tragiccode.com',
-  #   password => 'puppetlabs',
-  # }
+  jenkins::user { 'tragiccode':
+    email    => 'michael@tragiccode.com',
+    password => 'puppetlabs',
+  }
 }
