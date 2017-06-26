@@ -2,12 +2,12 @@
 #
 #
 class profile::linux::jenkinsmaster {
-
-  class { 'jenkins':
-    version            => 'latest',
-    lts                => true,
+  file { ['/var/lib/jenkins', '/var/lib/jenkins/secrets', '/var/lib/jenkins/init.groovy.d']:
+    ensure => directory,
+    owner   => 'jenkins',
+    group   => 'jenkins',
+    mode    => '0755',
   }
-
   # Disable Unlock Jenkins page
   file { '/var/lib/jenkins/jenkins.install.UpgradeWizard.state':
     content => '2.0',
@@ -44,13 +44,19 @@ class profile::linux::jenkinsmaster {
     instance.setAuthorizationStrategy(strategy)
     instance.save()
   EOF
-
+  
   file { '/var/lib/jenkins/init.groovy.d/basic-security.groovy':
     content => $content,
     ensure  => file,
     owner   => 'jenkins',
     group   => 'jenkins',
     mode    => '0755',
+  }
+
+
+  class { 'jenkins':
+    version            => 'latest',
+    lts                => true,
   }
 
   jenkins::plugin { 'structs': }
