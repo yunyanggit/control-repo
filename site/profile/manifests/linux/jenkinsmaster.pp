@@ -6,7 +6,6 @@ class profile::linux::jenkinsmaster {
   class { 'jenkins':
     version            => 'latest',
     lts                => true,
-    configure_firewall => true,
   }
 
   # Disable Unlock Jenkins page
