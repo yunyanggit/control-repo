@@ -9,55 +9,10 @@ class profile::linux::jenkinsmaster {
     lts                => true,
   }
 
-  file { ['/var/lib/jenkins', '/var/lib/jenkins/secrets', '/var/lib/jenkins/init.groovy.d']:
-    ensure => directory,
-    owner   => 'jenkins',
-    group   => 'jenkins',
-    mode    => '0755',
-  }
-  # Disable Unlock Jenkins page
-  file { '/var/lib/jenkins/jenkins.install.UpgradeWizard.state':
-    content => '2.0',
-    ensure  => file,
-    owner   => 'jenkins',
-    group   => 'jenkins',
-    mode    => '0755',
-  }
-
-  file { '/var/lib/jenkins/secrets/slave-to-master-security-kill-switch':
-    content => 'false',
-    ensure  => file,
-    owner   => 'jenkins',
-    group   => 'jenkins',
-    mode    => '0755',
-  }
-
-  $content = @(EOF)
-    #!groovy
-
-    import jenkins.model.*
-    import hudson.security.*
-
-    def instance = Jenkins.getInstance()
-
-    println "--> creating local user 'admin'"
-
-    def hudsonRealm = new HudsonPrivateSecurityRealm(false)
-    hudsonRealm.createAccount('admin','admin')
-    instance.setSecurityRealm(hudsonRealm)
-
-    def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
-    strategy.setAllowAnonymousRead(false)
-    instance.setAuthorizationStrategy(strategy)
-    instance.save()
-  EOF
-  
-  file { '/var/lib/jenkins/init.groovy.d/basic-security.groovy':
-    content => $content,
-    ensure  => file,
-    owner   => 'jenkins',
-    group   => 'jenkins',
-    mode    => '0755',
+  exec { 'jenkins-prefix': 
+    command => 'sed -i -e \'s/JENKINS_ARGS="\(.*\)"/JENKINS_ARGS="\1 --prefix=$PREFIX"/g\' /etc/default/jenkins',
+    onlyif => 'test -z `grep "JENKINS_ARGS" /etc/default/jenkins | grep  "\-\-prefix"`',
+    require => Class['jenkins']
   }
 
   jenkins::plugin { 'structs': }
