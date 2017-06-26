@@ -4,17 +4,23 @@
 class profile::linux::jenkinsmaster {
 
   class { 'jenkins':
-    version => 'latest',
-    lts     => true,
-    config_hash  => {
-            'JENKINS_JAVA_OPTIONS' => {value => '-Djenkins.install.runSetupWizard=false'},
-        },
-    user_hash => {
-    'admin' => {
-      'password' => 'puppetlabs',
-      'email'    => 'michael@tragiccode.com'
-    }
-   }
+    version            => 'latest',
+    lts                => true,
+    configure_firewall => true,
+  }
+
+  # Disable Unlock Jenkins page
+  file { '/var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion':
+    ensure  => present,
+    owner   => jenkins,
+    group   => jenkins,
+    mode    => '0644',
+    content => '2.0',
+    require => Class['jenkins']
+  }
+
+  file { '/tmp/init.groovy':
+    ensure => absent,
   }
 
   jenkins::plugin { 'structs': }
