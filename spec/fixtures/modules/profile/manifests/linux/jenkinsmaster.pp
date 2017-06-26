@@ -23,6 +23,8 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'workflow-scm-step': }
   jenkins::plugin { 'jquery-detached': }
   jenkins::plugin { 'mailer': }
+  jenkins::plugin { 'display-url-api': }
+  jenkins::plugin { 'ace-editor': }
   # jenkins::plugin { 'workflow-aggregator': }
   # jenkins::plugin { 'git': }
   # jenkins::plugin { 'workflow-scm-step': }
