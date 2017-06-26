@@ -4,17 +4,13 @@
 class profile::linux::jenkinsmaster {
 
   
-  class { 'jenkins':
-    version            => 'latest',
-    lts                => true,
-  }
-
-  exec { 'jenkins-prefix': 
-    command => 'sed -i -e \'s/JENKINS_ARGS="\(.*\)"/JENKINS_ARGS="\1 --prefix=$PREFIX"/g\' /etc/default/jenkins',
-    onlyif => 'test -z `grep "JENKINS_ARGS" /etc/default/jenkins | grep  "\-\-prefix"`',
-    require => Class['jenkins']
-  }
-
+class { 'jenkins':
+  config_hash => {
+    'JAVA_ARGS' => { value => '-Xmx1000m -Dhudson.DNSMultiCast.disabled=true -Djava.awt.headless=true -Djenkins.install.runSetupWizard=false -Dorg.jenkinsci.plugins.gitclient.Git.timeOut=30' },
+    'JENKINS_ARGS' => { value => '--webroot=/var/cache/jenkins/war --httpPort=$HTTP_PORT --httpListenAddress=127.0.0.1 --prefix=$PREFIX' },
+  },
+  lts => true,
+}
   jenkins::plugin { 'structs': }
   jenkins::plugin { 'puppet-enterprise-pipeline': }
   jenkins::plugin { 'workflow-api': }
