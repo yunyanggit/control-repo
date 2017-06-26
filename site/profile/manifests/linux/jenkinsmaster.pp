@@ -31,12 +31,13 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'pipeline-milestone-step': }
   jenkins::plugin { 'pipeline-rest-api': }
   jenkins::plugin { 'cloudbees-folder': }
+  jenkins::plugin { 'git-server': }
 
   # Git Plugin
   jenkins::plugin { 'git': }
   # Dependencies
   jenkins::plugin { 'git-client': }
-  # jenkins::plugin { 'junit': }
+  jenkins::plugin { 'junit': }
   jenkins::plugin { 'matrix-project': }
   jenkins::plugin { 'ssh-credentials': }
 
