@@ -2,7 +2,11 @@
 #
 #
 class profile::linux::jenkinsmaster {
-  include jenkins
+
+  class { 'jenkins':
+    version => 'latest',
+    lts     => true,
+  }
 
   jenkins::plugin { 'structs': }
   jenkins::plugin { 'puppet-enterprise-pipeline': }
