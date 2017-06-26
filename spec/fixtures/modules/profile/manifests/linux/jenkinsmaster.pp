@@ -8,8 +8,9 @@ class profile::linux::jenkinsmaster {
     email    => 'michael@tragiccode.com',
     password => 'changeme',
   }
-  jenkins::plugin { 'workflow-aggregator': }
-  jenkins::plugin { 'git': }
+  jenkins::plugin { 'structs': }
+  # jenkins::plugin { 'workflow-aggregator': }
+  # jenkins::plugin { 'git': }
   # jenkins::plugin { 'workflow-scm-step': }
   # jenkins::plugin { 'workflow-step-api': }
   # jenkins::plugin { 'workflow-support': }
