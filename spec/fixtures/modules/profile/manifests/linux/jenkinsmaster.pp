@@ -4,6 +4,12 @@
 class profile::linux::jenkinsmaster {
   include jenkins
 
+  jenkins::user { 'tragiccode':
+    email    => 'michael@tragiccode.com',
+    password => 'changeme',
+  }
+  jenkins::plugin { 'workflow-aggregator': }
+  jenkins::plugin { 'git': }
   # jenkins::plugin { 'workflow-scm-step': }
   # jenkins::plugin { 'workflow-step-api': }
   # jenkins::plugin { 'workflow-support': }
@@ -16,7 +22,7 @@ class profile::linux::jenkinsmaster {
   # jenkins::plugin { 'display-url-api': }
   # jenkins::plugin { 'durable-task': }
   # jenkins::plugin { 'jquery-detached': }
-  # jenkins::plugin { 'mailer': }
+  # jenkins::plugin { 'mailer': }   
   # jenkins::plugin { 'scm-api': }
   # jenkins::plugin { 'script-security': }
   # jenkins::plugin { 'plain-credentials': }
