@@ -4,5 +4,5 @@
 class role::jenkinsmaster {
     # resources
     include profile::base
-    include profile::jenkinsmaster
+    include profile::linux::jenkinsmaster
 }
