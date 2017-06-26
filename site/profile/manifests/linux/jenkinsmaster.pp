@@ -10,6 +10,12 @@ class profile::linux::jenkinsmaster {
   }
   jenkins::plugin { 'structs': }
   jenkins::plugin { 'puppet-enterprise-pipeline': }
+  jenkins::plugin { 'workflow-api': }
+  jenkins::plugin { 'workflow-basic-steps': }
+  jenkins::plugin { 'workflow-cps': }
+  jenkins::plugin { 'workflow-durable-task-step': }
+  jenkins::plugin { 'plain-credentials': }
+  jenkins::plugin { 'script-security': }
   # jenkins::plugin { 'workflow-aggregator': }
   # jenkins::plugin { 'git': }
   # jenkins::plugin { 'workflow-scm-step': }
@@ -26,7 +32,7 @@ class profile::linux::jenkinsmaster {
   # jenkins::plugin { 'jquery-detached': }
   # jenkins::plugin { 'mailer': }   
   # jenkins::plugin { 'scm-api': }
-  # jenkins::plugin { 'script-security': }
+  # jenkins::plugin { 'script-security': }  
   # jenkins::plugin { 'plain-credentials': }
   # jenkins::plugin { 'structs': }
   # jenkins::plugin { 'copyartifact': }
