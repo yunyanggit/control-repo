@@ -2,7 +2,7 @@
 #
 #
 class profile::linux::jenkinsmaster {
-    include jenkins
+  include jenkins
 
   jenkins::plugin { 'workflow-scm-step': }
   jenkins::plugin { 'workflow-step-api': }

@@ -15,6 +15,7 @@ mod 'puppetlabs/powershell', '2.1.0'
 mod 'puppetlabs/reboot', '1.2.1'
 mod 'puppetlabs/registry', '1.1.4'
 mod 'puppetlabs/stdlib', '4.17.1'
+mod 'puppetlabs/ruby'
 
 mod 'jenkins',
   :git    => 'https://github.com/jenkinsci/puppet-jenkins',
