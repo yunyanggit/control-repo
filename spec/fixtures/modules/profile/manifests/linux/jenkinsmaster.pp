@@ -29,4 +29,6 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'pipeline-model-definition': }
   jenkins::plugin { 'pipeline-stage-step': }
   jenkins::plugin { 'pipeline-milestone-step': }
+  jenkins::plugin { 'pipeline-rest-api': }
+  jenkins::plugin { 'git': }
 }
