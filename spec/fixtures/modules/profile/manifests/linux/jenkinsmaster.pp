@@ -9,17 +9,48 @@ class profile::linux::jenkinsmaster {
   }
 
   # Disable Unlock Jenkins page
-  file { '/var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion':
-    ensure  => present,
-    owner   => jenkins,
-    group   => jenkins,
-    mode    => '0644',
+  file { '/var/lib/jenkins/jenkins.install.UpgradeWizard.state':
     content => '2.0',
-    require => Class['jenkins']
+    ensure  => file,
+    owner   => 'jenkins',
+    group   => 'jenkins',
+    mode    => '0755',
   }
 
-  file { '/tmp/init.groovy':
-    ensure => absent,
+  file { '/var/lib/jenkins/secrets/slave-to-master-security-kill-switch':
+    content => 'false',
+    ensure  => file,
+    owner   => 'jenkins',
+    group   => 'jenkins',
+    mode    => '0755',
+  }
+
+  $content = @(EOF)
+    #!groovy
+
+    import jenkins.model.*
+    import hudson.security.*
+
+    def instance = Jenkins.getInstance()
+
+    println "--> creating local user 'admin'"
+
+    def hudsonRealm = new HudsonPrivateSecurityRealm(false)
+    hudsonRealm.createAccount('admin','admin')
+    instance.setSecurityRealm(hudsonRealm)
+
+    def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
+    strategy.setAllowAnonymousRead(false)
+    instance.setAuthorizationStrategy(strategy)
+    instance.save()
+  EOF
+
+  file { '/var/lib/jenkins/init.groovy.d/basic-security.groovy':
+    content => $content,
+    ensure  => file,
+    owner   => 'jenkins',
+    group   => 'jenkins',
+    mode    => '0755',
   }
 
   jenkins::plugin { 'structs': }
