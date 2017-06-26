@@ -21,4 +21,5 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'mailer': }
   jenkins::plugin { 'display-url-api': }
   jenkins::plugin { 'ace-editor': }
+  jenkins::plugin { 'pipeline': }
 }
