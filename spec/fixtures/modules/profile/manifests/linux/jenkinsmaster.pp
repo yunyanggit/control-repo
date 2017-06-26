@@ -15,7 +15,7 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'workflow-basic-steps': }
   jenkins::plugin { 'workflow-cps': }
   jenkins::plugin { 'workflow-durable-task-step': }
-  jenkins::plugin { 'plain-credentials': }
+  # jenkins::plugin { 'plain-credentials': }
   jenkins::plugin { 'script-security': }
   jenkins::plugin { 'scm-api': }
   jenkins::plugin { 'workflow-support': }
