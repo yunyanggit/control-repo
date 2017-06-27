@@ -3,6 +3,9 @@
 #
 class profile::windows::sqlserver {
   # Get you up to the point where your database is ready to accept schema and data.  it gets you so that point
+  # Setup SA
+  # Setup Svc account
+  # Change where logs are stored
   dsc_xmountimage { 'SQL Server ISO':
     dsc_ensure      => 'Present',
     dsc_imagepath   => 'C:\\users\\vagrant\\desktop\\sql\\en_sql_server_2016_developer_with_service_pack_1_x64_dvd_9548071.iso',
