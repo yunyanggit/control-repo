@@ -55,6 +55,7 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'git-server': }
   jenkins::plugin { 'branch-api': }
   jenkins::plugin { 'pipeline-graph-analysis': }
+  jenkins::plugin { 'pipeline-model-definition': }
   # jenkins::user { 'tragiccode':
   #   email    => 'michael@tragiccode.com',
   #   password => 'puppetlabs',
