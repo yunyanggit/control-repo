@@ -3,7 +3,7 @@
 #
 class profile::linux::jenkinsmaster {
   exec { 'turn off autostart apt package install':
-    command => "echo -e '#!/bin/sh\\nexit 101' | sudo install -m 755 /dev/stdin /usr/sbin/policy-rc.d && sudo apt-get install jenkins && sudo rm -f /usr/sbin/policy-rc.d",
+    command => "echo -e '#!/bin/sh\\nexit 101' | install -m 755 /dev/stdin /usr/sbin/policy-rc.d && apt-get install jenkins && rm -f /usr/sbin/policy-rc.d",
     path   => [ '/usr/local/bin/', '/bin/' ],
   }
 
