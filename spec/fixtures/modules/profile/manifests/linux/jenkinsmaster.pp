@@ -56,6 +56,13 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'branch-api': }
   jenkins::plugin { 'pipeline-graph-analysis': }
   jenkins::plugin { 'pipeline-model-definition': }
+  jenkins::plugin { 'credentials-binding': }
+  
+  jenkins::plugin { 'docker-workflow': }
+  jenkins::plugin { 'pipeline-model-api': }
+  jenkins::plugin { 'pipeline-model-declarative-agent': }
+  jenkins::plugin { 'pipeline-model-extensions': }
+  jenkins::plugin { 'pipeline-stage-tags-metadata': }
   # jenkins::user { 'tragiccode':
   #   email    => 'michael@tragiccode.com',
   #   password => 'puppetlabs',
