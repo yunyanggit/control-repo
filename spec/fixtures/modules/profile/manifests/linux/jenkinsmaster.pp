@@ -49,6 +49,8 @@ class profile::linux::jenkinsmaster {
     version => '2.12.1',
   }
   jenkins::plugin { 'momentjs': }
+  jenkins::plugin { 'authentication-tokens': }
+  jenkins::plugin { 'icon-shim': }
   jenkins::plugin { 'pipeline-rest-api': }
   jenkins::plugin { 'handlebars': }
   jenkins::plugin { 'cloudbees-folder': }
