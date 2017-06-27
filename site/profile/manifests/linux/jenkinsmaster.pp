@@ -45,7 +45,9 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'workflow-multibranch': }
   jenkins::plugin { 'pipeline-stage-step': }
   jenkins::plugin { 'workflow-cps-global-lib': }
-  jenkins::plugin { 'workflow-job': }
+    jenkins::plugin { 'workflow-job':
+    version => '2.12.1',
+  }
   jenkins::plugin { 'momentjs': }
   jenkins::plugin { 'pipeline-rest-api': }
   jenkins::plugin { 'handlebars': }
