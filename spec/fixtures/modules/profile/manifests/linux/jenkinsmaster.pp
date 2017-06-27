@@ -10,7 +10,7 @@ class profile::linux::jenkinsmaster {
   class { 'jenkins':
     version        => 'latest', 
     lts            => true,
-    manage_service => false,
+    service_ensure => 'stopped',
   }
 
 
