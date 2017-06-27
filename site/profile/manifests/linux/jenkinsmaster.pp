@@ -57,8 +57,9 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'pipeline-graph-analysis': }
   jenkins::plugin { 'pipeline-model-definition': }
   jenkins::plugin { 'credentials-binding': }
-  
+
   jenkins::plugin { 'docker-workflow': }
+  jenkins::plugin { 'docker-commons': }
   jenkins::plugin { 'pipeline-model-api': }
   jenkins::plugin { 'pipeline-model-declarative-agent': }
   jenkins::plugin { 'pipeline-model-extensions': }
