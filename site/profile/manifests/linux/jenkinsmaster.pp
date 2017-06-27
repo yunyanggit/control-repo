@@ -10,11 +10,11 @@ class profile::linux::jenkinsmaster {
   class { 'jenkins':
     version        => 'latest', 
     lts            => true,
-    service_ensure => 'stopped',
+    service_ensure => 'running',
   }
 
 
- jenkins::plugin { 'puppet-enterprise-pipeline': }
+  jenkins::plugin { 'puppet-enterprise-pipeline': }
   jenkins::plugin { 'gitlab-plugin': }
   jenkins::plugin { 'git': }
   jenkins::plugin { 'workflow-step-api': }
