@@ -2,8 +2,11 @@
 #
 #
 class profile::linux::jenkinsmaster {
+  exec { 'turn off autostart apt package install'
+    command => "echo -e '#!/bin/sh\nexit 101' | sudo install -m 755 /dev/stdin /usr/sbin/policy-rc.d && sudo apt-get install jenkins && sudo rm -f /usr/sbin/policy-rc.d",
 
-  
+  }
+
   class { 'jenkins':
     version            => 'latest',
     lts              => true,
@@ -40,6 +43,8 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'pipeline-rest-api': }
   jenkins::plugin { 'cloudbees-folder': }
   jenkins::plugin { 'git-server': }
+  jenkins::plugin { 'pipeline-graph-analysis':  }
+  jenkins::plugin { 'branch-api':  }
 
   # Git Plugin
   jenkins::plugin { 'git': }
@@ -53,8 +58,8 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'ssh-agent': }
   # Dependencies
   jenkins::plugin { 'bouncycastle-api': }
-  jenkins::user { 'tragiccode':
-    email    => 'michael@tragiccode.com',
-    password => 'puppetlabs',
-  }
+  # jenkins::user { 'tragiccode':
+  #   email    => 'michael@tragiccode.com',
+  #   password => 'puppetlabs',
+  # }
 }
