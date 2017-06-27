@@ -4,12 +4,13 @@
 class profile::linux::jenkinsmaster {
   exec { 'turn off autostart apt package install':
     command => "echo -e '#!/bin/sh\\nexit 101' | install -m 755 /dev/stdin /usr/sbin/policy-rc.d",
-    path   => [ '/usr/local/bin/', '/bin/' ],
+    path    => [ '/usr/local/bin/', '/bin/', '/usr/bin/' ],
   }
 
   class { 'jenkins':
-    version            => 'latest',
-    lts              => true,
+    version        => 'latest', 
+    lts            => true,
+    manage_service => false,
   }
 
 
