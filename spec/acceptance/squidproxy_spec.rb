@@ -19,6 +19,15 @@ describe 'profile::linux::squidproxy' do
       apply_manifest(install_manifest, :catch_changes => true)
     end
 
+    describe package('squid') do
+      it { should be_installed }
+    end
+
+    describe service('squid') do
+      it { should be_running }
+      it { should be_enabled }
+    end
+
   end
 
 end
