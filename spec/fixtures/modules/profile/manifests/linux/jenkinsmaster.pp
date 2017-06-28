@@ -66,8 +66,8 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'pipeline-model-declarative-agent': }
   jenkins::plugin { 'pipeline-model-extensions': }
   jenkins::plugin { 'pipeline-stage-tags-metadata': }
-  # jenkins::user { 'tragiccode':
-  #   email    => 'michael@tragiccode.com',
-  #   password => 'puppetlabs',
-  # }
+  jenkins::user { 'tragiccode':
+    email    => 'michael@tragiccode.com',
+    password => 'puppetlabs',
+  }
 }
