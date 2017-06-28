@@ -32,6 +32,10 @@ describe 'profile::linux::squidproxy' do
       its(:content) { should match /#{Regexp.escape('acl localnet src 10.43.192.0/18')}/ }
     end
 
+    describe file('/etc/squid/squid.conf') do
+      its(:content) { should match /#{Regexp.escape('http_access allow localnet')}/ }
+    end
+
   end
 
 end
