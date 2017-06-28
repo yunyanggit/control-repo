@@ -15,6 +15,21 @@ The Goal of this repository is to provide the ability to quickly spin up a puppe
 NOTE: file://~/Downloads/puppet-enterprise-2017.2.1-ubuntu-16.04-amd64.tar.gz might work
 
 
+# Using the vagrant plugins
+## Listing host names + private ip's
+A quick way to list your machines host names and private ip's is to run the following command from the vagrant-hosts plugin that was installed earlier
+
+
+```powershell
+    > vagrant hosts list
+```
+
+The following can be run to generate puppet code to update your own machines hosts file to easily communicate with the nodes via their hostnames
+
+```powershell
+    > vagrant hosts puppetize
+```
+
 # Using Code Manager
 1.) Install Pe-Client tools on your local workstation
 2.) Run the following to quickly configure PE Client tools
