@@ -8,10 +8,52 @@ class profile::linux::jenkinsmaster {
   }
 
   class { 'jenkins':
-    version        => 'latest', 
+    version        => 'latest',
     lts            => true,
-    service_ensure => 'running',
+    service_ensure => 'stopped',
   }
+
+  file { '/var/lib/jenkins/init.groovy.d':
+    ensure  => directory,
+    owner   => 'jenkins',
+    group   => 'jenkins',
+    #mode    => '0755',
+  }
+  
+   $content = @(EOF)
+    #!groovy
+
+    import jenkins.model.*
+    import hudson.security.*
+
+    def instance = Jenkins.getInstance()
+
+    println "--> creating local user 'admin'"
+
+    def hudsonRealm = new HudsonPrivateSecurityRealm(false)
+    hudsonRealm.createAccount('admin','admin')
+    instance.setSecurityRealm(hudsonRealm)
+
+    def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
+    strategy.setAllowAnonymousRead(false)
+    instance.setAuthorizationStrategy(strategy)
+    instance.save()
+EOF
+
+ file { '/var/lib/jenkins/init.groovy.d/basic-security.groovy':
+  content => $content,
+  ensure  => file,
+  owner   => 'jenkins',
+  group   => 'jenkins',
+  mode    => '0755',
+}
+
+service { 'jenkins':
+  ensure     => running,
+  enable     => true,
+  hasrestart => true,
+  hasstatus  => true,
+}
 
 
   jenkins::plugin { 'puppet-enterprise-pipeline': }
@@ -66,8 +108,4 @@ class profile::linux::jenkinsmaster {
   jenkins::plugin { 'pipeline-model-declarative-agent': }
   jenkins::plugin { 'pipeline-model-extensions': }
   jenkins::plugin { 'pipeline-stage-tags-metadata': }
-  jenkins::user { 'tragiccode':
-    email    => 'michael@tragiccode.com',
-    password => 'puppetlabs',
-  }
 }
