@@ -1,15 +1,12 @@
+---
 HOSTS:
-   ubuntu-1604-x64:
-    pe_dir: C://Windows//Temp
-    pe_ver: '2017.2.1'
+  ubuntu-1604-x64:
     roles:
-      - master
-      - database  
-      - dashboard
+      - agent
+      - default
     platform: ubuntu-16.04-amd64
-    box: puppetlabs/ubuntu-16.04-64-nocm
     hypervisor: vagrant
+    box: puppetlabs/ubuntu-16.04-64-nocm
 CONFIG:
-  type: pe
-  pe_ver: '2017.2.1'
+  type: foss
   log_level: debug
