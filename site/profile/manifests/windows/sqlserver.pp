@@ -6,6 +6,17 @@ class profile::windows::sqlserver {
   # Setup SA
   # Setup Svc account
   # Change where logs are stored
+
+  # Apparantly this can be done.  I guess to protect the iso?
+  # acl { 'c:/staging/profile/SQLServer2014-x64-ENU.iso':
+  #   permissions  => [
+  #     { identity => 'Everyone', rights       => [ 'full' ] },
+  #     { identity => 'Administrators', rights => [ 'full' ] },
+  #     { identity => 'vagrant', rights        => [ 'full' ] },
+  #   ],
+  #   require => Staging::File['SQLServer2014-x64-ENU.iso'],
+  #   before  => Mount_iso['c:/staging/profile/SQLServer2014-x64-ENU.iso'],
+  # }
   dsc_xmountimage { 'SQL Server ISO':
     dsc_ensure      => 'Present',
     dsc_imagepath   => 'C:\\users\\vagrant\\desktop\\sql\\en_sql_server_2016_developer_with_service_pack_1_x64_dvd_9548071.iso',
