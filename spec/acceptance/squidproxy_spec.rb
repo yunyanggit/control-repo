@@ -28,6 +28,10 @@ describe 'profile::linux::squidproxy' do
       it { should be_enabled }
     end
 
+    describe file('/etc/squid/squid.conf') do
+      its(:content) { should match /#{Regexp.escape('acl localnet src 10.43.192.0/18')}/ }
+    end
+
   end
 
 end
