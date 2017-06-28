@@ -10,7 +10,7 @@ class profile::linux::jenkinsmaster {
   class { 'jenkins':
     version        => 'latest',
     lts            => true,
-    service_ensure => 'stopped',
+    manage_service => $false,
   }
 
   file { '/var/lib/jenkins/init.groovy.d':
