@@ -7,11 +7,6 @@ class profile::linux::jenkinsmaster {
     path    => [ '/usr/local/bin/', '/bin/', '/usr/bin/' ],
   }
 
-  class { 'jenkins':
-    version        => 'latest',
-    lts            => true,
-    manage_service => $false,
-  }
 
   file { '/var/lib/jenkins/init.groovy.d':
     ensure  => directory,
@@ -48,12 +43,18 @@ EOF
   mode    => '0755',
 }
 
-service { 'jenkins':
-  ensure     => running,
-  enable     => true,
-  hasrestart => true,
-  hasstatus  => true,
-}
+  class { 'jenkins':
+    version        => 'latest',
+    lts            => true,
+  }
+
+# service { 'jenkins':
+#   ensure     => running,
+#   enable     => true,
+#   hasrestart => true,
+#   hasstatus  => true,
+# }
+
 
 
   jenkins::plugin { 'puppet-enterprise-pipeline': }
