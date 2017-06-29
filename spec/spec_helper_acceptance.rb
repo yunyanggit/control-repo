@@ -7,6 +7,8 @@ hosts.each do |host|
   # Install module dependencies
   on host, puppet('module', 'install', 'puppetlabs-stdlib')
   on host, puppet('module', 'install', 'puppet-squid')
+  on host, puppet('module', 'install', 'puppetlabs-chocolatey')
+  on host, puppet('module', 'install', 'puppetlabs-dsc')
 end
 
 RSpec.configure do |c|
