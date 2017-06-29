@@ -2,7 +2,6 @@ require 'spec_helper_acceptance'
 
 describe 'profile::linux::squidproxy' do
 
-
   context 'when installing with provided mandatory parameters' do
 
     let(:install_manifest) {
@@ -34,15 +33,13 @@ describe 'profile::linux::squidproxy' do
 
     describe file('/etc/squid/squid.conf') do
       its(:content) { should match /#{Regexp.escape('acl localnet src 10.43.192.0/18')}/ }
-    end
-
-    describe file('/etc/squid/squid.conf') do
       its(:content) { should match /#{Regexp.escape('http_access allow localnet')}/ }
+      its(:content) { should match /#{Regexp.escape('acl gcp_metadata dst 169.254.169.254')}/ }
+      its(:content) { should match /#{Regexp.escape('http_access deny gcp_metadata')}/ }
+      its(:content) { should match /#{Regexp.escape('http_access deny all')}/ }
+      its(:content) { should match /cache deny all/ }
     end
 
-    describe file('/etc/squid/squid.conf') do
-      its(:content) { should match /#{Regexp.escape('http_access deny all')}/ }
-    end
   end
 
 end
