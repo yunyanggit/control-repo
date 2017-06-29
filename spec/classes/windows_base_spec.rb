@@ -17,7 +17,9 @@ describe 'profile::windows::base' do
       :chocolatey_version => '0.10.6.1',
       :log_output         => true,
     }) }
+    
 
+    
     it { should contain_dsc_xtimezone('Server Timezone').with({
         :ensure               => 'present',
         :dsc_issingleinstance => 'yes',
