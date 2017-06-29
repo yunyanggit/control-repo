@@ -40,6 +40,9 @@ describe 'profile::linux::squidproxy' do
       its(:content) { should match /#{Regexp.escape('http_access allow localnet')}/ }
     end
 
+    describe file('/etc/squid/squid.conf') do
+      its(:content) { should match /#{Regexp.escape('http_access deny all')}/ }
+    end
   end
 
 end

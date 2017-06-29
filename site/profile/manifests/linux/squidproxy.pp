@@ -15,4 +15,9 @@ class profile::linux::squidproxy {
   squid::http_access{ 'localnet':
     action => allow,
   }
+  
+  squid::http_access{ 'all':
+    action => deny,
+  }
+
 }
