@@ -5,10 +5,12 @@ fixtures:
     node_encrypt:
       repo: "https://github.com/binford2k/binford2k-node_encrypt"
       ref: "d021a17d34e726affafa3290577a6da563b251b9"
+    chocolatey:
+      repo: "https://github.com/puppetlabs/puppetlabs-chocolatey"
+      ref: "3.0.0"
     dsc:
       repo: "https://github.com/puppetlabs/puppetlabs-dsc"
       ref: "1.3.0"
-    windows_ad: 'https://github.com/insentia/windows_ad'
     splunk: 'https://github.com/voxpupuli/puppet-splunk'
     staging: 'https://github.com/voxpupuli/puppet-staging'
     inifile: 'https://github.com/puppetlabs/puppetlabs-inifile'
@@ -17,3 +19,6 @@ fixtures:
     reboot:
       repo: "https://github.com/puppetlabs/puppetlabs-reboot"
       ref: "1.2.1"
+    registry:
+      repo: "https://github.com/puppetlabs/puppetlabs-registry"
+      ref: "1.1.4"

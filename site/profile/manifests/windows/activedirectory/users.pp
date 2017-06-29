@@ -18,7 +18,7 @@ class profile::windows::activedirectory::users(
 
 
 
-  dsc_xaduser { 'ad_principal_manager':
+  dsc_xaduser { 'sql_server_admin':
     dsc_ensure      => 'present',
     dsc_domainname  => 'tragiccode.local',
     dsc_username    => 'sql_server_admin',
