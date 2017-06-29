@@ -44,10 +44,12 @@ class profile::windows::sqlserver {
     dsc_features            => 'SQLENGINE',
     # dsc_instanceid        => 'MSSQLSERVER',
     # dsc_productkey        => 'xxx-xxx-xxx-xxx'
+    # lint:ignore:quoted_booleans
     dsc_updateenabled       => 'true',
     #dsc_updatesource       => 'C:\\'
     dsc_sqmreporting        => 'true',
     dsc_errorreporting      => 'true',
+    # lint:endignore
     # dsc_installshareddir  => 'C:\\',
     # dsc_installsharedwowdir => 'C:\\',
     # dsc_InstanceDir => 'C:\\Program Files\\Microsoft SQL Server',

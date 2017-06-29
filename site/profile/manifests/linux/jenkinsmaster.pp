@@ -9,13 +9,13 @@ class profile::linux::jenkinsmaster {
 
 
   file { '/var/lib/jenkins/init.groovy.d':
-    ensure  => directory,
-    owner   => 'jenkins',
-    group   => 'jenkins',
-    #mode    => '0755',
+    ensure => directory,
+    owner  => 'jenkins',
+    group  => 'jenkins',
+    #mode   => '0755',
   }
-  
-   $content = @(EOF)
+
+  $content = @(EOF)
     #!groovy
 
     import jenkins.model.*
@@ -35,17 +35,17 @@ class profile::linux::jenkinsmaster {
     instance.save()
 EOF
 
- file { '/var/lib/jenkins/init.groovy.d/basic-security.groovy':
-  content => $content,
-  ensure  => file,
-  owner   => 'jenkins',
-  group   => 'jenkins',
-  mode    => '0755',
-}
+  file { '/var/lib/jenkins/init.groovy.d/basic-security.groovy':
+    ensure  => file,
+    content => $content,
+    owner   => 'jenkins',
+    group   => 'jenkins',
+    mode    => '0755',
+  }
 
   class { 'jenkins':
-    version        => 'latest',
-    lts            => true,
+    version => 'latest',
+    lts     => true,
   }
 
 # service { 'jenkins':
