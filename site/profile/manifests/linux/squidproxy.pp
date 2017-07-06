@@ -29,10 +29,10 @@ class profile::linux::squidproxy {
     action => deny,
   }
 
-  concat::fragment{"squid_conf_cache_deny_all":
+  concat::fragment{ 'squid_conf_cache_deny_all':
     target  => '/etc/squid/squid.conf',
     content => 'cache deny all',
-    order   => "65535-01", # Place at the end of the file
+    order   => '65535-01', # Place at the end of the file
   }
 
 }
