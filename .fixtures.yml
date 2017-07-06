@@ -16,6 +16,9 @@ fixtures:
     inifile: 'https://github.com/puppetlabs/puppetlabs-inifile'
     powershell: 'https://github.com/puppetlabs/puppetlabs-powershell'
     stdlib: 'https://github.com/puppetlabs/puppetlabs-stdlib'
+    ravendb: 
+      repo: 'https://github.com/tragiccode/tragiccode-ravendb'
+      ref: 'master'
     reboot:
       repo: "https://github.com/puppetlabs/puppetlabs-reboot"
       ref: "1.2.1"
