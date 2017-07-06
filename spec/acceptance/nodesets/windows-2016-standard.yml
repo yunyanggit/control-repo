@@ -4,7 +4,7 @@ HOSTS:
     roles:
       - agent
     platform: windows-server-amd64
-    box: tragiccode/windows-2016-standard
+    box: opentable/win-2012r2-standard-amd64-nocm
     hypervisor: vagrant
     user: vagrant
     ip: '10.255.33.129' # ip of host

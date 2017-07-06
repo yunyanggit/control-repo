@@ -9,6 +9,7 @@ hosts.each do |host|
   on host, puppet('module', 'install', 'puppet-squid')
   on host, puppet('module', 'install', 'puppetlabs-chocolatey')
   on host, puppet('module', 'install', 'puppetlabs-dsc')
+  # clone_git_repo_on(host, "C:\\Windows\\Temp", extract_repo_info_from(build_git_url('hiera')))
 end
 
 RSpec.configure do |c|
