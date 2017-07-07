@@ -170,3 +170,102 @@ some_easy_to_use_label: >
     U0/ptTBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBB/imFWp4D9XOu6T50u
     9Z/4gCB8t4dl5bFy/OEDxKMRf6eCTFh77DfhdamKWvEK94l52g==]
 ```
+
+
+516  git clone https://github.com/TraGicCode/PuppetEnterprise-SandBox.git
+  517  ls
+  518  cd PuppetEnterprise-SandBox/
+  519  ls
+  520  vagrant up testmaster.nobrainer2.com
+  521  vagrant plugin install oscar
+  522  vagrant up testmaster.nobrainer2.com
+  525  vim README.md
+  526  vagrant up testmaster.nobrainer2.com
+  527  vagrant destroy testmaster.nobrainer2.com --force
+  528  vagrant up testmaster.nobrainer2.com
+  529  vagrant ssh testmaster.nobrainer2.com
+    532  cd src/
+
+  534  cd PuppetEnterprise-SandBox/
+  538  vim PuppetMaster.pp
+
+  540  vagrant destroy testmaster.nobrainer2.com
+
+
+
+
+
+
+522  git clone https://github.com/TraGicCode/control-repo
+  523  ls
+  524  cd control-repo/
+  525  ls
+  526  vagrant hosts list
+  527  vagrant
+  528  vagrant plugin install vagrant-pe_build
+  529  vagrant status
+  530  vagrant up puppetmaster
+  531  ls
+  532  pwd
+  533  vim Vagrantfile
+  534  vagrant pe-build copy  ~/Downloads/puppet-enterprise-2017.2.1-ubuntu-16.04-amd64.tar.gz
+  535  vagrant
+  536  vagrant pe-build
+  537  vagrant pe-build list
+  538  vagrant up puppetmaster
+  539  vagrant provision
+  540  vagrant hosts list
+  541  vagrant hosts puppetize
+  542  ping puppetmaster
+  543  ping puppetmaster-001
+  544  puppet
+  545  bundle exec puppet
+  546  bundle install --path .bundle
+  547  bundle exec puppet
+  548  bundle exec rake -T
+  549  cat Rakefil;e
+  550  cat Rakefile
+  551  ls
+  552  rm Gemfile.lock
+  553  git status
+  554  bundle install --path .bundle
+  555  rvm
+  556  \curl -sSL https://get.rvm.io | bash -s stable
+  557  rvm list
+  558  rvm
+  559  vim ~/.bash_profile
+  560  source ~/.profile
+  561  rvm
+  562  rvm list
+  563  rvm rubies
+  564  rvm help
+  565  rvm install
+  566  rvm install ruby-2.4.1
+  567  rvm use 2.4.1
+  568  clear
+  569  cat Gemfile
+  570  bundle install --path .bundle
+  571  gem install bundler
+  572  bundle install --path .bundle
+  573  bundle exec rake -T
+  574  bundle exec rake test
+  575  bundle exec rake spec
+  576  clear
+  577  bundle exec puppet
+  578  clear
+  579  vagrant status
+  580  vagrant up dc-001 --provider virtualbox
+  581  git log -S no-com
+  582  git log -S no-cm
+  583  git log -S nocm
+  584  qgit show 9197
+  585  git show 9197
+  586  git show 9e97
+  592  vim Vagrantfile
+  593  vim ~/.vimrc
+  594  vagrant up dc-001 --provider virtualbox
+  595  vagrant up dc-001 --provider virtualbox
+  596  vagrant status
+  597  vagrant powershell dc-001
+  598  vagrant ssh puppetmaster
+
