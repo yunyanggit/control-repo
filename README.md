@@ -6,13 +6,11 @@ The Goal of this repository is to provide the ability to quickly spin up a puppe
 1.) Install Vagrant
 
 2.) Install Vagrant plugins
-> vagrant plugin install vagrant-pe_build
-> vagrant plugin install vagrant-hosts
-
-3.) Download The version of puppet enterprise you would like to use
-> Invoke-RestMethod -Method Get -Uri https://s3.amazonaws.com/pe-builds/released/2017.2.1/puppet-enterprise-2017.2.1-ubuntu-16.04-amd64.tar.gz -OutFile ~/Downloads/puppet-enterprise-2017.2.1-ubuntu-16.04-amd64.tar.gz
-> vagrant pe-build copy file://C:/Users/tragiccode/Downloads/puppet-enterprise-2017.2.1-ubuntu-16.04-amd64.tar.gz
-NOTE: file://~/Downloads/puppet-enterprise-2017.2.1-ubuntu-16.04-amd64.tar.gz might work
+```powershell
+    > vagrant plugin install vagrant-pe_build
+    > vagrant plugin install vagrant-hosts
+```
+NOTE: If you would like to change/update the version of PE in the vagrant file simply change the version assigned to **config.pe_build.version**
 
 
 # Using the vagrant plugins

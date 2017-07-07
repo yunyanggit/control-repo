@@ -1,5 +1,8 @@
+PE_VERSION = '2017.2.1'
+
 Vagrant.configure('2') do |config|
-  config.pe_build.version = '2017.2.1'
+  config.pe_build.version = PE_VERSION
+  config.pe_build.download_root = "https://s3.amazonaws.com/pe-builds/released/#{PE_VERSION}"
 
   config.vm.define :puppetmaster do |node|
     node.vm.hostname = 'puppetmaster-001.local'
