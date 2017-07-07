@@ -22,3 +22,6 @@ mod 'puppetlabs/stdlib', '4.17.1'
 mod 'jenkins',
   :git    => 'https://github.com/jenkinsci/puppet-jenkins',
   :commit => '23df7764d58aed80b573621b102f82a702217a7a'
+mod 'ravendb',
+  :git => 'https://github.com/tragiccode/tragiccode-ravendb',
+  :ref => 'master'
