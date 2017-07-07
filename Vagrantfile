@@ -1,8 +1,5 @@
-PE_VERSION = '2017.2.1'
-
 Vagrant.configure('2') do |config|
-  config.pe_build.version = PE_VERSION
-  config.pe_build.download_root = "https://s3.amazonaws.com/pe-builds/released/#{PE_VERSION}"
+  config.pe_build.version = '2017.2.1'
 
   config.vm.define :puppetmaster do |node|
     node.vm.hostname = 'puppetmaster-001.local'
@@ -105,7 +102,7 @@ Vagrant.configure('2') do |config|
   config.vm.define 'dc-001' do |node|
     node.vm.hostname = 'dc-001'
     node.vm.network :private_network, :ip => '10.20.1.7'
-    node.vm.box = 'tragiccode/windows-2016-standard'
+    node.vm.box = 'opentable/win-2012r2-standard-amd64-nocm'
     node.vm.provider "virtualbox" do |v|
       v.memory = 2048
       v.linked_clone = true
