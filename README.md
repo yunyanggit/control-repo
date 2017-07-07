@@ -44,9 +44,9 @@ The following can be run to generate puppet code to update your own machines hos
 ```
 4.) Initiate a deployment of all environments
 ```powershell
-> puppet-code print-config
-> puppet-code status
-> puppet-code deploy --all --wait --log-level info
+    > puppet-code print-config
+    > puppet-code status
+    > puppet-code deploy --all --wait --log-level info
 ```
 
 # Using Eyaml
