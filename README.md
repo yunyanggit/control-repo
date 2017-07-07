@@ -31,19 +31,23 @@ The following can be run to generate puppet code to update your own machines hos
 # Using Code Manager
 1.) Install Pe-Client tools on your local workstation
 2.) Run the following to quickly configure PE Client tools
-> Configure-PEClientTools.ps1
+```powershell
+    > Configure-PEClientTools.ps1
+```
 2.) Update your hosts file to have the following entry
-10.20.1.2     puppetmaster.local
+```powershell
+    10.20.1.2     puppetmaster.local
+```
 3.) Obtain a RBAC token so you can deploy environments
-
-> puppet-access login --username admin
-
+```powershell
+    > puppet-access login --username admin
+```
 4.) Initiate a deployment of all environments
-
+```powershell
 > puppet-code print-config
 > puppet-code status
 > puppet-code deploy --all --wait --log-level info
-
+```
 
 # Using Eyaml
 First you will need to generate some encryption keys.  Simply run the following command
